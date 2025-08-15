@@ -1,0 +1,1617 @@
+// ui.c
+
+#include "ui.h"
+#include "ui_helpers.h"
+
+///////////////////// VARIABLES ////////////////////
+void effect_Animation( lv_obj_t *TargetObject, int delay);
+void logo_Animation( lv_obj_t *TargetObject, int delay);
+void icon_Animation( lv_obj_t *TargetObject, int delay);
+void arc_Animation( lv_obj_t *TargetObject, int delay);
+void boot_Animation( lv_obj_t *TargetObject, int delay);
+void loading_Animation( lv_obj_t *TargetObject, int delay);
+
+
+// SCREEN: ui_Boot_Screen
+void ui_Boot_Screen_screen_init(void);
+void ui_event_Boot_Screen( lv_event_t * e);
+lv_obj_t *ui_Boot_Screen;
+lv_obj_t *ui_boot_Image;
+lv_obj_t *ui_loading_img;
+// CUSTOM VARIABLES
+lv_obj_t *uic_Boot_Screen;
+lv_obj_t *uic_boot_Image;
+lv_obj_t *uic_loading_img;
+
+
+// SCREEN: ui_controlSettingScreen
+void ui_controlSettingScreen_screen_init(void);
+void ui_event_controlSettingScreen( lv_event_t * e);
+lv_obj_t *ui_controlSettingScreen;
+void ui_event_returnButton4( lv_event_t * e);
+lv_obj_t *ui_returnButton4;
+lv_obj_t *ui_settingscreenlabel;
+void ui_event_SettingCTRL( lv_event_t * e);
+lv_obj_t *ui_SettingCTRL;
+void ui_event_Advanced_Setting_Button( lv_event_t * e);
+lv_obj_t *ui_Advanced_Setting_Button;
+void ui_event_TurnOffCTRL( lv_event_t * e);
+lv_obj_t *ui_TurnOffCTRL;
+void ui_event_Status_info_Button( lv_event_t * e);
+lv_obj_t *ui_Status_info_Button;
+lv_obj_t *ui_COOLER_IS__ON;
+lv_obj_t *ui_COOLER_IS__OFF;
+// CUSTOM VARIABLES
+lv_obj_t *uic_controlSettingScreen;
+lv_obj_t *uic_returnButton4;
+lv_obj_t *uic_settingscreenlabel;
+lv_obj_t *uic_SettingCTRL;
+lv_obj_t *uic_Advanced_Setting_Button;
+lv_obj_t *uic_TurnOffCTRL;
+lv_obj_t *uic_Status_info_Button;
+lv_obj_t *uic_COOLER_IS__ON;
+lv_obj_t *uic_COOLER_IS__OFF;
+
+
+// SCREEN: ui_processSettingScreen
+void ui_processSettingScreen_screen_init(void);
+void ui_event_processSettingScreen( lv_event_t * e);
+lv_obj_t *ui_processSettingScreen;
+void ui_event_returnButton5( lv_event_t * e);
+lv_obj_t *ui_returnButton5;
+lv_obj_t *ui_ProcessSettingCTRL;
+void ui_event_Setting_Save_btn( lv_event_t * e);
+lv_obj_t *ui_Setting_Save_btn;
+lv_obj_t *ui_Setting_Save_btn_label;
+lv_obj_t *ui_ProcessScreenContainer1;
+lv_obj_t *ui_Compressor_Range_Spinbox;
+void ui_event_Compressor_Range_Plus_Button( lv_event_t * e);
+lv_obj_t *ui_Compressor_Range_Plus_Button;
+void ui_event_Compressor_Range_Minus_Button( lv_event_t * e);
+lv_obj_t *ui_Compressor_Range_Minus_Button;
+lv_obj_t *ui_lable3951;
+lv_obj_t *ui_ProcessScreenContainer2;
+lv_obj_t *ui_Compressor_Offste_Spinbox;
+void ui_event_Compressor_Offset_Plus_Button( lv_event_t * e);
+lv_obj_t *ui_Compressor_Offset_Plus_Button;
+void ui_event_Compressor_Offset_Minus_Button( lv_event_t * e);
+lv_obj_t *ui_Compressor_Offset_Minus_Button;
+lv_obj_t *ui_lable39854;
+lv_obj_t *ui_ProcessScreenContainer3;
+lv_obj_t *ui_High_Temp_Alarm_Spinbox;
+void ui_event_High_Temp_Alarm_Plus_Button( lv_event_t * e);
+lv_obj_t *ui_High_Temp_Alarm_Plus_Button;
+void ui_event_High_Temp_Alarm_Minus_Button( lv_event_t * e);
+lv_obj_t *ui_High_Temp_Alarm_Minus_Button;
+lv_obj_t *ui_lable37892;
+lv_obj_t *ui_ProcessScreenContainer4;
+void ui_event_PressureAlarmSwitch( lv_event_t * e);
+lv_obj_t *ui_PressureAlarmSwitch;
+lv_obj_t *ui_PressureAlarmSwitch_ONlabel;
+lv_obj_t *ui_PressureAlarmSwitch_OFFlabel;
+lv_obj_t *ui_ProcessScreenContainer5;
+void ui_event_TempAlarmSwitch( lv_event_t * e);
+lv_obj_t *ui_TempAlarmSwitch;
+lv_obj_t *ui_TempAlarmSwitch_ONlabel;
+lv_obj_t *ui_TempAlarmSwitch_OFFlabel;
+lv_obj_t *ui_High_Temp_Alarm_Label;
+lv_obj_t *ui_High_Pressure_Alarm_Label;
+lv_obj_t *ui_Compressor_Offset_Label;
+lv_obj_t *ui_Compressor_Range_Label;
+lv_obj_t *ui_High_Temp_Alarm_Switch_Label;
+// CUSTOM VARIABLES
+lv_obj_t *uic_processSettingScreen;
+lv_obj_t *uic_returnButton5;
+lv_obj_t *uic_ProcessSettingCTRL;
+lv_obj_t *uic_Setting_Save_btn;
+lv_obj_t *uic_Setting_Save_btn_label;
+lv_obj_t *uic_ProcessScreenContainer1;
+lv_obj_t *uic_Compressor_Range_Spinbox;
+lv_obj_t *uic_Compressor_Range_Plus_Button;
+lv_obj_t *uic_Compressor_Range_Minus_Button;
+lv_obj_t *uic_lable3951;
+lv_obj_t *uic_ProcessScreenContainer2;
+lv_obj_t *uic_Compressor_Offste_Spinbox;
+lv_obj_t *uic_Compressor_Offset_Plus_Button;
+lv_obj_t *uic_Compressor_Offset_Minus_Button;
+lv_obj_t *uic_lable39854;
+lv_obj_t *uic_ProcessScreenContainer3;
+lv_obj_t *uic_High_Temp_Alarm_Spinbox;
+lv_obj_t *uic_High_Temp_Alarm_Plus_Button;
+lv_obj_t *uic_High_Temp_Alarm_Minus_Button;
+lv_obj_t *uic_lable37892;
+lv_obj_t *uic_ProcessScreenContainer4;
+lv_obj_t *uic_PressureAlarmSwitch;
+lv_obj_t *uic_PressureAlarmSwitch_ONlabel;
+lv_obj_t *uic_PressureAlarmSwitch_OFFlabel;
+lv_obj_t *uic_ProcessScreenContainer5;
+lv_obj_t *uic_TempAlarmSwitch;
+lv_obj_t *uic_TempAlarmSwitch_ONlabel;
+lv_obj_t *uic_TempAlarmSwitch_OFFlabel;
+lv_obj_t *uic_High_Temp_Alarm_Label;
+lv_obj_t *uic_High_Pressure_Alarm_Label;
+lv_obj_t *uic_Compressor_Offset_Label;
+lv_obj_t *uic_Compressor_Range_Label;
+lv_obj_t *uic_High_Temp_Alarm_Label;
+
+
+// SCREEN: ui_addvansedSettingScreen
+void ui_addvansedSettingScreen_screen_init(void);
+void ui_event_addvansedSettingScreen( lv_event_t * e);
+lv_obj_t *ui_addvansedSettingScreen;
+void ui_event_returnButton14( lv_event_t * e);
+lv_obj_t *ui_returnButton14;
+lv_obj_t *ui_Advanced_Setting_Label;
+void ui_event_Setting_Save_btn_in_advanced_Screen( lv_event_t * e);
+lv_obj_t *ui_Setting_Save_btn_in_advanced_Screen;
+lv_obj_t *ui_Setting_Save_btn_label_advanced_Screen;
+void ui_event_TabView1( lv_event_t * e);
+lv_obj_t *ui_TabView1;
+lv_obj_t *ui_tab1;
+lv_obj_t *ui_AdvancedScreenContainer1;
+lv_obj_t *ui_AntiFreeze_Temp_Range_Spinbox;
+void ui_event_AntiFreeze_Temp_Range_Plus_Button( lv_event_t * e);
+lv_obj_t *ui_AntiFreeze_Temp_Range_Plus_Button;
+void ui_event_AntiFreeze_Temp_Range_Minus_Button( lv_event_t * e);
+lv_obj_t *ui_AntiFreeze_Temp_Range_Minus_Button;
+lv_obj_t *ui_lable25646;
+lv_obj_t *ui_AdvancedScreenContainer2;
+lv_obj_t *ui_AntiFreeze_Temp_Offset_Spinbox;
+void ui_event_AntiFreeze_Temp_Offset_Plus_Button( lv_event_t * e);
+lv_obj_t *ui_AntiFreeze_Temp_Offset_Plus_Button;
+void ui_event_AntiFreeze_Temp_Offset_Minus_Button( lv_event_t * e);
+lv_obj_t *ui_AntiFreeze_Temp_Offset_Minus_Button;
+lv_obj_t *ui_lable2235474;
+lv_obj_t *ui_AdvancedScreenContainer3;
+lv_obj_t *ui_Compressor_Rest_Time_Spinbox;
+void ui_event_Compressor_Rest_Time_Plus_Button( lv_event_t * e);
+lv_obj_t *ui_Compressor_Rest_Time_Plus_Button;
+void ui_event_Compressor_Rest_Time_Minus_Button( lv_event_t * e);
+lv_obj_t *ui_Compressor_Rest_Time_Minus_Button;
+lv_obj_t *ui_minutelable11;
+lv_obj_t *ui_AdvancedScreenContainer4;
+lv_obj_t *ui_Filter_Alarm_Spinbox;
+void ui_event_Filter_Alarm_Plus_Button( lv_event_t * e);
+lv_obj_t *ui_Filter_Alarm_Plus_Button;
+void ui_event_Filter_Alarm_Minus_Button( lv_event_t * e);
+lv_obj_t *ui_Filter_Alarm_Minus_Button;
+lv_obj_t *ui_lable29854;
+lv_obj_t *ui_Compressor_Rest_Time_Label;
+lv_obj_t *ui_AntiFreeze_Temp_Offset_Label;
+lv_obj_t *ui_AntiFreeze_Temp_Range_Label;
+lv_obj_t *ui_Filter_Alarm__Range_Label;
+lv_obj_t *ui_tab2;
+lv_obj_t *ui_AdvancedScreenContainer5;
+lv_obj_t *ui_fan_2_range_Spinbox;
+void ui_event_fan_2_range_Plus_Button( lv_event_t * e);
+lv_obj_t *ui_fan_2_range_Plus_Button;
+void ui_event_fan_2_range_Minus_Button( lv_event_t * e);
+lv_obj_t *ui_fan_2_range_Minus_Button;
+void ui_event_fan_2_Switch( lv_event_t * e);
+lv_obj_t *ui_fan_2_Switch;
+lv_obj_t *ui_enable_fan_2_Label;
+lv_obj_t *ui_disable_fan_2_Label;
+lv_obj_t *ui_lable29988;
+lv_obj_t *ui_fan_2_range_Label;
+lv_obj_t *ui_AdvancedScreenContainer6;
+void ui_event_door_alarm_status_Switch( lv_event_t * e);
+lv_obj_t *ui_door_alarm_status_Switch;
+lv_obj_t *ui_enable_door_alarm_status_Label;
+lv_obj_t *ui_disable_door_alarm_status_Label;
+lv_obj_t *ui_door_function_and_alarm_Label;
+lv_obj_t *ui_AdvancedScreenContainer7;
+void ui_event_filter_alarm_status_Switch( lv_event_t * e);
+lv_obj_t *ui_filter_alarm_status_Switch;
+lv_obj_t *ui_enable_filter_alarm_status_Label;
+lv_obj_t *ui_disable_filter_alarm_status_Label;
+lv_obj_t *ui_Filter_alarm_switch_Label;
+lv_obj_t *ui_tab3;
+lv_obj_t *ui_Label456;
+void ui_event_Sensor_Setup_Button( lv_event_t * e);
+lv_obj_t *ui_Sensor_Setup_Button;
+lv_obj_t *ui_Sensor_Setup_Button_Label;
+lv_obj_t *ui_Label123;
+void ui_event_open_factory_reset_panel( lv_event_t * e);
+lv_obj_t *ui_open_factory_reset_panel;
+lv_obj_t *ui_factory_reset_btn_Label;
+void ui_event_DEVICE_RESTART_Button( lv_event_t * e);
+lv_obj_t *ui_DEVICE_RESTART_Button;
+lv_obj_t *ui_DEVICE_RESTART_Button_Label;
+lv_obj_t *ui_sensors_setup_container;
+lv_obj_t *ui_Sensor_Setup_Notice_Container;
+lv_obj_t *ui_Reset_Notice_Label;
+void ui_event_submitResetbtn( lv_event_t * e);
+lv_obj_t *ui_submitResetbtn;
+void ui_event_CancelResetbtn( lv_event_t * e);
+lv_obj_t *ui_CancelResetbtn;
+lv_obj_t *ui_submitResetbtn_Label;
+lv_obj_t *ui_CancelResetbtn_Label;
+lv_obj_t *ui_SensorSetupDangerIcon;
+lv_obj_t *ui_Reseting_Sensors_Notice_2;
+lv_obj_t *ui_Sensor_Setup_main_Container_1;
+void ui_event_returnButton668( lv_event_t * e);
+lv_obj_t *ui_returnButton668;
+lv_obj_t *ui_disconnect_sensors_Label;
+lv_obj_t *ui_Detail_Success_Status_message_1;
+lv_obj_t *ui_Detail_Success_Status_message_2;
+lv_obj_t *ui_disconnect_error_icon;
+lv_obj_t *ui_success_disconnect_icon;
+void ui_event_check_and_next_btn_1( lv_event_t * e);
+lv_obj_t *ui_check_and_next_btn_1;
+lv_obj_t *ui_check_and_next_btn_1_label;
+lv_obj_t *ui_Sensor_Setup_main_Container_2;
+void ui_event_returnButton6987( lv_event_t * e);
+lv_obj_t *ui_returnButton6987;
+lv_obj_t *ui_Connect_Inlet_Label;
+lv_obj_t *ui_Detail_Success_Status_message_3;
+lv_obj_t *ui_Detail_Success_Status_message_4;
+lv_obj_t *ui_inlet_setup_error_icon;
+lv_obj_t *ui_inlet_setup_success_icon;
+void ui_event_check_and_next_inlet_btn( lv_event_t * e);
+lv_obj_t *ui_check_and_next_inlet_btn;
+lv_obj_t *ui_check_and_next_inlet_btn_label;
+lv_obj_t *ui_Sensor_Setup_main_Container_3;
+void ui_event_returnButton64( lv_event_t * e);
+lv_obj_t *ui_returnButton64;
+lv_obj_t *ui_Connect_Outlet_Label;
+lv_obj_t *ui_Detail_Success_Status_message_5;
+lv_obj_t *ui_Detail_Success_Status_message_6;
+lv_obj_t *ui_Outlet_setup_error_icon;
+lv_obj_t *ui_Outlet_setup_success_icon;
+void ui_event_check_and_next_Outlet_btn( lv_event_t * e);
+lv_obj_t *ui_check_and_next_Outlet_btn;
+lv_obj_t *ui_check_and_next_Outlet_btn_label;
+lv_obj_t *ui_Sensor_Setup_main_Container_4;
+void ui_event_returnButton625( lv_event_t * e);
+lv_obj_t *ui_returnButton625;
+lv_obj_t *ui_Connect_Antifreeze_Label;
+lv_obj_t *ui_Detail_Success_Status_message_7;
+lv_obj_t *ui_Detail_Success_Status_message_8;
+lv_obj_t *ui_Antifreeze_setup_error_icon;
+lv_obj_t *ui_Antifreeze_setup_success_icon;
+void ui_event_check_and_next_Antifreeze_btn( lv_event_t * e);
+lv_obj_t *ui_check_and_next_Antifreeze_btn;
+lv_obj_t *ui_check_and_next_Antifreeze_btn_label;
+lv_obj_t *ui_Sensor_Setup_main_Container_5;
+void ui_event_returnButton614987( lv_event_t * e);
+lv_obj_t *ui_returnButton614987;
+lv_obj_t *ui_Connect_Filter_Label;
+lv_obj_t *ui_Detail_Success_Status_message_9;
+lv_obj_t *ui_Detail_Success_Status_message_10;
+lv_obj_t *ui_Filter_setup_error_icon;
+lv_obj_t *ui_Filter_setup_success_icon;
+void ui_event_check_and_next_Filter_btn( lv_event_t * e);
+lv_obj_t *ui_check_and_next_Filter_btn;
+lv_obj_t *ui_check_and_next_Filter_btn_label;
+lv_obj_t *ui_Sensor_Setup_main_Container_6;
+lv_obj_t *ui_sensor_setup_finish_label;
+lv_obj_t *ui_sensor_setup_finish_icon;
+lv_obj_t *ui_factory_reset_container;
+lv_obj_t *ui_reset_factory_notice_text;
+void ui_event_close_factory_container( lv_event_t * e);
+lv_obj_t *ui_close_factory_container;
+lv_obj_t *ui_Label275;
+void ui_event_submit_factory( lv_event_t * e);
+lv_obj_t *ui_submit_factory;
+lv_obj_t *ui_Label1863;
+// CUSTOM VARIABLES
+lv_obj_t *uic_addvansedSettingScreen;
+lv_obj_t *uic_returnButton14;
+lv_obj_t *uic_Advanced_Setting_Label;
+lv_obj_t *uic_Setting_Save_btn_in_advanced_Screen;
+lv_obj_t *uic_Setting_Save_btn_label_advanced_Screen;
+lv_obj_t *uic_TabView1;
+lv_obj_t *uic_AdvancedScreenContainer1;
+lv_obj_t *uic_AntiFreeze_Temp_Range_Spinbox;
+lv_obj_t *uic_AntiFreeze_Temp_Range_Plus_Button;
+lv_obj_t *uic_AntiFreeze_Temp_Range_Minus_Button;
+lv_obj_t *uic_lable25646;
+lv_obj_t *uic_AdvancedScreenContainer2;
+lv_obj_t *uic_AntiFreeze_Temp_Offset_Spinbox;
+lv_obj_t *uic_AntiFreeze_Temp_Offset_Plus_Button;
+lv_obj_t *uic_AntiFreeze_Temp_Offset_Minus_Button;
+lv_obj_t *uic_lable2235474;
+lv_obj_t *uic_AdvancedScreenContainer3;
+lv_obj_t *uic_Compressor_Rest_Time_Spinbox;
+lv_obj_t *uic_Compressor_Rest_Time_Plus_Button;
+lv_obj_t *uic_Compressor_Rest_Time_Minus_Button;
+lv_obj_t *uic_minutelable11;
+lv_obj_t *uic_AdvancedScreenContainer4;
+lv_obj_t *uic_Filter_Alarm_Spinbox;
+lv_obj_t *uic_Filter_Alarm_Plus_Button;
+lv_obj_t *uic_Filter_Alarm_Minus_Button;
+lv_obj_t *uic_lable29854;
+lv_obj_t *uic_Compressor_Rest_Time_Label;
+lv_obj_t *uic_AntiFreeze_Temp_Offset_Label;
+lv_obj_t *uic_AntiFreeze_Temp_Range_Label;
+lv_obj_t *uic_Filter_Alarm__Range_Label;
+lv_obj_t *uic_AdvancedScreenContainer5;
+lv_obj_t *uic_fan_2_range_Spinbox;
+lv_obj_t *uic_fan_2_range_Plus_Button;
+lv_obj_t *uic_fan_2_range_Minus_Button;
+lv_obj_t *uic_fan_2_Switch;
+lv_obj_t *uic_enable_fan_2_Label;
+lv_obj_t *uic_disable_fan_2_Label;
+lv_obj_t *uic_lable29988;
+lv_obj_t *uic_fan_2_range_Label;
+lv_obj_t *uic_AdvancedScreenContainer6;
+lv_obj_t *uic_door_alarm_status_Switch;
+lv_obj_t *uic_enable_door_alarm_status_Label;
+lv_obj_t *uic_disable_door_alarm_status_Label;
+lv_obj_t *uic_door_function_and_alarm_Label;
+lv_obj_t *uic_AdvancedScreenContainer7;
+lv_obj_t *uic_filter_alarm_status_Switch;
+lv_obj_t *uic_enable_filter_alarm_status_Label;
+lv_obj_t *uic_disable_filter_alarm_status_Label;
+lv_obj_t *uic_Filter_alarm_switch_Label;
+lv_obj_t *uic_Label456;
+lv_obj_t *uic_Sensor_Setup_Button;
+lv_obj_t *uic_Sensor_Setup_Button_Label;
+lv_obj_t *uic_Label123;
+lv_obj_t *uic_open_factory_reset_panel;
+lv_obj_t *uic_factory_reset_btn_Label;
+lv_obj_t *uic_DEVICE_RESTART_Button;
+lv_obj_t *uic_DEVICE_RESTART_Button_Label;
+lv_obj_t *uic_sensors_setup_container;
+lv_obj_t *uic_Sensor_Setup_Notice_Container;
+lv_obj_t *uic_Reset_Notice_Label;
+lv_obj_t *uic_submitResetbtn;
+lv_obj_t *uic_CancelResetbtn;
+lv_obj_t *uic_submitResetbtn_Label;
+lv_obj_t *uic_CancelResetbtn_Label;
+lv_obj_t *uic_SensorSetupDangerIcon;
+lv_obj_t *uic_Reseting_Sensors_Notice_2;
+lv_obj_t *uic_Sensor_Setup_main_Container_1;
+lv_obj_t *uic_returnButton668;
+lv_obj_t *uic_disconnect_sensors_Label;
+lv_obj_t *uic_Detail_Success_Status_message_1;
+lv_obj_t *uic_Detail_Success_Status_message_1;
+lv_obj_t *uic_disconnect_error_icon;
+lv_obj_t *uic_success_disconnect_icon;
+lv_obj_t *uic_check_and_next_btn_1;
+lv_obj_t *uic_check_and_next_btn_1_label;
+lv_obj_t *uic_Sensor_Setup_main_Container_2;
+lv_obj_t *uic_returnButton6987;
+lv_obj_t *uic_Connect_Inlet_Label;
+lv_obj_t *uic_Detail_Success_Status_message_3;
+lv_obj_t *uic_Detail_Success_Status_message_4;
+lv_obj_t *uic_inlet_setup_error_icon;
+lv_obj_t *uic_inlet_setup_success_icon;
+lv_obj_t *uic_check_and_next_inlet_btn;
+lv_obj_t *uic_check_and_next_inlet_btn_label;
+lv_obj_t *uic_Sensor_Setup_main_Container_3;
+lv_obj_t *uic_returnButton64;
+lv_obj_t *uic_Connect_Outlet_Label;
+lv_obj_t *uic_Detail_Success_Status_message_5;
+lv_obj_t *uic_Detail_Success_Status_message_6;
+lv_obj_t *uic_Outlet_setup_error_icon;
+lv_obj_t *uic_Outlet_setup_success_icon;
+lv_obj_t *uic_check_and_next_Outlet_btn;
+lv_obj_t *uic_check_and_next_Outlet_btn_label;
+lv_obj_t *uic_Sensor_Setup_main_Container_4;
+lv_obj_t *uic_returnButton625;
+lv_obj_t *uic_Connect_Antifreeze_Label;
+lv_obj_t *uic_Detail_Success_Status_message_7;
+lv_obj_t *uic_Detail_Success_Status_message_8;
+lv_obj_t *uic_Antifreeze_setup_error_icon;
+lv_obj_t *uic_Antifreeze_setup_success_icon;
+lv_obj_t *uic_check_and_next_Antifreeze_btn;
+lv_obj_t *uic_check_and_next_Antifreeze_btn_label;
+lv_obj_t *uic_Sensor_Setup_main_Container_5;
+lv_obj_t *uic_returnButton614987;
+lv_obj_t *uic_Connect_Filter_Label;
+lv_obj_t *uic_Detail_Success_Status_message_9;
+lv_obj_t *uic_Detail_Success_Status_message_10;
+lv_obj_t *uic_Filter_setup_error_icon;
+lv_obj_t *uic_Filter_setup_success_icon;
+lv_obj_t *uic_check_and_next_Filter_btn;
+lv_obj_t *uic_check_and_next_Filter_btn_label;
+lv_obj_t *uic_Sensor_Setup_main_Container_6;
+lv_obj_t *uic_sensor_setup_finish_label;
+lv_obj_t *uic_sensor_setup_finish_icon;
+lv_obj_t *uic_factory_reset_container;
+lv_obj_t *uic_reset_factory_notice_text;
+lv_obj_t *uic_close_factory_container;
+lv_obj_t *uic_Label275;
+lv_obj_t *uic_submit_factory;
+lv_obj_t *uic_Label1863;
+
+
+// SCREEN: ui_statusScreen
+void ui_statusScreen_screen_init(void);
+void ui_event_statusScreen( lv_event_t * e);
+lv_obj_t *ui_statusScreen;
+void ui_event_returnButton3( lv_event_t * e);
+lv_obj_t *ui_returnButton3;
+lv_obj_t *ui_statusscreenlabel;
+lv_obj_t *ui_TEMP_Label;
+lv_obj_t *ui_ALARM_Label;
+lv_obj_t *ui_Status_Label;
+lv_obj_t *ui_App_Connection_Label;
+lv_obj_t *ui_info_Label;
+lv_obj_t *ui_Maintenance_Label;
+void ui_event_tempStatusButton( lv_event_t * e);
+lv_obj_t *ui_tempStatusButton;
+lv_obj_t *ui_tempStatusPanel;
+void ui_event_returnButton11( lv_event_t * e);
+lv_obj_t *ui_returnButton11;
+lv_obj_t *ui_tempStatusLabel;
+lv_obj_t *ui_inlet_temp_danger;
+lv_obj_t *ui_outlet_temp_danger;
+lv_obj_t *ui_antifreeze_temp_danger;
+lv_obj_t *ui_filter_temp_danger;
+lv_obj_t *ui_ContainerA1;
+lv_obj_t *ui_Inlet_Temp_status;
+lv_obj_t *ui_Outlet_Temp_status;
+lv_obj_t *ui_antifreeze_temp_status;
+lv_obj_t *ui_fan_2_filter_alarm_status;
+void ui_event_alarmStatusButton( lv_event_t * e);
+lv_obj_t *ui_alarmStatusButton;
+lv_obj_t *ui_alarmStatusPanel;
+void ui_event_returnButton2( lv_event_t * e);
+lv_obj_t *ui_returnButton2;
+lv_obj_t *ui_alarmStatusLabel;
+lv_obj_t *ui_high_temp_danger;
+lv_obj_t *ui_door_danger;
+lv_obj_t *ui_filter_danger;
+lv_obj_t *ui_high_pressure_danger;
+lv_obj_t *ui_ContainerA2;
+lv_obj_t *ui_high_Temp_Alarm;
+lv_obj_t *ui_Door_Alarm;
+lv_obj_t *ui_Filter_Alarm;
+lv_obj_t *ui_high_Pressure_Alarm;
+void ui_event_relayStatusButton( lv_event_t * e);
+lv_obj_t *ui_relayStatusButton;
+lv_obj_t *ui_relayStatusPanel;
+void ui_event_returnButton7( lv_event_t * e);
+lv_obj_t *ui_returnButton7;
+lv_obj_t *ui_relayStatusLabel;
+lv_obj_t *ui_ContainerA3;
+lv_obj_t *ui_evaprartor_Fan_Status;
+lv_obj_t *ui_Compressor_Status;
+lv_obj_t *ui_condensor_Fan_1_Status;
+lv_obj_t *ui_condensor_Fan_2_Status;
+void ui_event_networkStatusButton( lv_event_t * e);
+lv_obj_t *ui_networkStatusButton;
+lv_obj_t *ui_networkStatusPanel;
+void ui_event_returnButton8( lv_event_t * e);
+lv_obj_t *ui_returnButton8;
+lv_obj_t *ui_Connect_to_Device_Label;
+lv_obj_t *ui_ContainerA4;
+lv_obj_t *ui_access_Point_wifi;
+lv_obj_t *ui_access_Point_Password;
+lv_obj_t *ui_guidetext;
+lv_obj_t *ui_QRcode_Tab;
+lv_obj_t *ui_appldownload;
+lv_obj_t *ui_Application_QR_Code;
+lv_obj_t *ui_download_App_Label;
+lv_obj_t *ui_connectToapp;
+lv_obj_t *ui_Connection_QR_Code;
+lv_obj_t *ui_Connect_App_Label;
+void ui_event_show_QR_Code_Button( lv_event_t * e);
+lv_obj_t *ui_show_QR_Code_Button;
+void ui_event_Hide_QR_Code_Button( lv_event_t * e);
+lv_obj_t *ui_Hide_QR_Code_Button;
+void ui_event_deviceInfoButton( lv_event_t * e);
+lv_obj_t *ui_deviceInfoButton;
+lv_obj_t *ui_deviceInfoPanel;
+void ui_event_returnButton9( lv_event_t * e);
+lv_obj_t *ui_returnButton9;
+lv_obj_t *ui_deviceInfoLabel;
+lv_obj_t *ui_ContainerA5;
+lv_obj_t *ui_serial_number;
+lv_obj_t *ui_customerID;
+lv_obj_t *ui_activationDate;
+void ui_event_serviceInfoButton( lv_event_t * e);
+lv_obj_t *ui_serviceInfoButton;
+lv_obj_t *ui_serviceInfoPanel;
+void ui_event_returnButton10( lv_event_t * e);
+lv_obj_t *ui_returnButton10;
+lv_obj_t *ui_serviceInfoLabel;
+lv_obj_t *ui_ContainerA6;
+lv_obj_t *ui_servicesintervals;
+// CUSTOM VARIABLES
+lv_obj_t *uic_statusScreen;
+lv_obj_t *uic_returnButton3;
+lv_obj_t *uic_statusscreenlabel;
+lv_obj_t *uic_TEMP_Label;
+lv_obj_t *uic_ALARM_Label;
+lv_obj_t *uic_Status_Label;
+lv_obj_t *uic_App_Connection_Label;
+lv_obj_t *uic_info_Label;
+lv_obj_t *uic_Maintenance_Label;
+lv_obj_t *uic_tempStatusButton;
+lv_obj_t *uic_tempStatusPanel;
+lv_obj_t *uic_returnButton11;
+lv_obj_t *uic_tempStatusLabel;
+lv_obj_t *uic_inlet_temp_danger;
+lv_obj_t *uic_outlet_temp_danger;
+lv_obj_t *uic_antifreeze_temp_danger;
+lv_obj_t *uic_filter_temp_danger;
+lv_obj_t *uic_ContainerA1;
+lv_obj_t *uic_Inlet_Temp_status;
+lv_obj_t *uic_Outlet_Temp_status;
+lv_obj_t *uic_antifreeze_temp_status;
+lv_obj_t *uic_fan_2_filter_alarm_status;
+lv_obj_t *uic_alarmStatusButton;
+lv_obj_t *uic_alarmStatusPanel;
+lv_obj_t *uic_returnButton2;
+lv_obj_t *uic_alarmStatusLabel;
+lv_obj_t *uic_high_temp_danger;
+lv_obj_t *uic_door_danger;
+lv_obj_t *uic_filter_danger;
+lv_obj_t *uic_high_pressure_danger;
+lv_obj_t *uic_ContainerA2;
+lv_obj_t *uic_high_Temp_Alarm;
+lv_obj_t *uic_Door_Alarm;
+lv_obj_t *uic_Filter_Alarm;
+lv_obj_t *uic_high_Pressure_Alarm;
+lv_obj_t *uic_relayStatusButton;
+lv_obj_t *uic_relayStatusPanel;
+lv_obj_t *uic_returnButton7;
+lv_obj_t *uic_relayStatusLabel;
+lv_obj_t *uic_ContainerA3;
+lv_obj_t *uic_evaprartor_Fan_Status;
+lv_obj_t *uic_Compressor_Status;
+lv_obj_t *uic_condensor_Fan_1_Status;
+lv_obj_t *uic_condensor_Fan_2_Status;
+lv_obj_t *uic_networkStatusButton;
+lv_obj_t *uic_networkStatusPanel;
+lv_obj_t *uic_returnButton8;
+lv_obj_t *uic_Connect_to_Device_Label;
+lv_obj_t *uic_ContainerA4;
+lv_obj_t *uic_access_Point_wifi;
+lv_obj_t *uic_access_Point_Password;
+lv_obj_t *uic_guidetext;
+lv_obj_t *uic_QRcode_Tab;
+lv_obj_t *uic_Application_QR_Code;
+lv_obj_t *uic_download_App_Label;
+lv_obj_t *uic_connectToapp;
+lv_obj_t *uic_Connection_QR_Code;
+lv_obj_t *uic_Connect_App_Label;
+lv_obj_t *uic_show_QR_Code_Button;
+lv_obj_t *uic_Hide_QR_Code_Button;
+lv_obj_t *uic_deviceInfoButton;
+lv_obj_t *uic_deviceInfoPanel;
+lv_obj_t *uic_returnButton9;
+lv_obj_t *uic_deviceInfoLabel;
+lv_obj_t *uic_ContainerA5;
+lv_obj_t *uic_serial_number;
+lv_obj_t *uic_customerID;
+lv_obj_t *uic_activationDate;
+lv_obj_t *uic_serviceInfoButton;
+lv_obj_t *uic_serviceInfoPanel;
+lv_obj_t *uic_returnButton10;
+lv_obj_t *uic_serviceInfoLabel;
+lv_obj_t *uic_ContainerA6;
+lv_obj_t *uic_servicesintervals;
+
+
+// SCREEN: ui_mainScreen
+void ui_mainScreen_screen_init(void);
+void ui_event_mainScreen( lv_event_t * e);
+lv_obj_t *ui_mainScreen;
+lv_obj_t *ui_Logo;
+void ui_event_MenuButton( lv_event_t * e);
+lv_obj_t *ui_MenuButton;
+void ui_event_inlet_Arc( lv_event_t * e);
+lv_obj_t *ui_inlet_Arc;
+lv_obj_t *ui_inletMainsScreen;
+void ui_event_outlet_Arc( lv_event_t * e);
+lv_obj_t *ui_outlet_Arc;
+lv_obj_t *ui_outletMainsScreen;
+lv_obj_t *ui_Cooler_OFF_Icon;
+lv_obj_t *ui_Cooler_ON_Icon;
+lv_obj_t *ui_Compressor_ON_Icon;
+lv_obj_t *ui_Compressor_OFF_Icon;
+lv_obj_t *ui_High_Temp_Icon;
+lv_obj_t *ui_Low_Temp_Icon;
+lv_obj_t *ui_Low_Pressure_Icon;
+lv_obj_t *ui_High_Pressure_Icon;
+lv_obj_t *ui_Door_Open_Icon;
+lv_obj_t *ui_Door_Close_Icon;
+lv_obj_t *ui_arc_danger_outlet_;
+lv_obj_t *ui_arc_danger_inlet;
+// CUSTOM VARIABLES
+lv_obj_t *uic_mainScreen;
+lv_obj_t *uic_Logo;
+lv_obj_t *uic_MenuButton;
+lv_obj_t *uic_inlet_Arc;
+lv_obj_t *uic_inletMainsScreen;
+lv_obj_t *uic_outlet_Arc;
+lv_obj_t *uic_outletMainsScreen;
+lv_obj_t *uic_Cooler_OFF_Icon;
+lv_obj_t *uic_Cooler_ON_Icon;
+lv_obj_t *uic_Compressor_ON_Icon;
+lv_obj_t *uic_Compressor_OFF_Icon;
+lv_obj_t *uic_High_Temp_Icon;
+lv_obj_t *uic_Low_Temp_Icon;
+lv_obj_t *uic_Low_Pressure_Icon;
+lv_obj_t *uic_High_Pressure_Icon;
+lv_obj_t *uic_Door_Open_Icon;
+lv_obj_t *uic_Door_Close_Icon;
+lv_obj_t *uic_arc_danger_outlet_;
+lv_obj_t *uic_arc_danger_inlet;
+
+// EVENTS
+lv_obj_t *ui____initial_actions0;
+
+// IMAGES AND IMAGE SETS
+const lv_img_dsc_t *ui_imgset_[1] = {&ui_img_1234_png};
+const lv_img_dsc_t *ui_imgset_blur_240x[1] = {&ui_img_blur_240x320_png};
+const lv_img_dsc_t *ui_imgset_blur_color_background_85551_240x[1] = {&ui_img_blur_color_background_85551_240x320_png};
+const lv_img_dsc_t *ui_imgset_1002920590[1] = {&ui_img_575393433};
+const lv_img_dsc_t *ui_imgset_882430644[1] = {&ui_img_640283455};
+const lv_img_dsc_t *ui_imgset_menu[1] = {&ui_img_menu43_png};
+const lv_img_dsc_t *ui_imgset_1298101175[1] = {&ui_img_1397087731};
+const lv_img_dsc_t *ui_imgset_netff_color_background_85551_240x[1] = {&ui_img_netff_color_background_85551_240x320_png};
+const lv_img_dsc_t *ui_imgset_1084269119[1] = {&ui_img_1417296881};
+const lv_img_dsc_t *ui_imgset_netlkjhg_color_background_85551_240x[1] = {&ui_img_netlkjhg_color_background_85551_240x320_png};
+const lv_img_dsc_t *ui_imgset_return_[1] = {&ui_img_return_66_png};
+
+///////////////////// TEST LVGL SETTINGS ////////////////////
+#if LV_COLOR_DEPTH != 16
+    #error "LV_COLOR_DEPTH should be 16bit to match SquareLine Studio's settings"
+#endif
+#if LV_COLOR_16_SWAP !=0
+    #error "LV_COLOR_16_SWAP should be 0 to match SquareLine Studio's settings"
+#endif
+
+///////////////////// ANIMATIONS ////////////////////
+void effect_Animation( lv_obj_t *TargetObject, int delay)
+{
+ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
+PropertyAnimation_0_user_data->target = TargetObject;
+PropertyAnimation_0_user_data->imgset = (lv_img_dsc_t **)ui_imgset_;
+PropertyAnimation_0_user_data->imgset_size = sizeof(ui_imgset_)/(sizeof(lv_img_dsc_t*));
+PropertyAnimation_0_user_data->val = -1;
+lv_anim_t PropertyAnimation_0;
+lv_anim_init(&PropertyAnimation_0);
+lv_anim_set_time(&PropertyAnimation_0, 500);
+lv_anim_set_user_data(&PropertyAnimation_0, PropertyAnimation_0_user_data);
+lv_anim_set_custom_exec_cb(&PropertyAnimation_0, _ui_anim_callback_set_opacity );
+lv_anim_set_values(&PropertyAnimation_0, 0, 255 );
+lv_anim_set_path_cb( &PropertyAnimation_0, lv_anim_path_linear);
+lv_anim_set_delay( &PropertyAnimation_0, delay + 0 );
+lv_anim_set_deleted_cb( &PropertyAnimation_0, _ui_anim_callback_free_user_data );
+lv_anim_set_playback_time(&PropertyAnimation_0, 0);
+lv_anim_set_playback_delay(&PropertyAnimation_0, 0);
+ lv_anim_set_repeat_count(&PropertyAnimation_0, 0);
+lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
+lv_anim_set_early_apply( &PropertyAnimation_0, false );
+ lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_opacity );
+lv_anim_start(&PropertyAnimation_0);
+
+}
+void logo_Animation( lv_obj_t *TargetObject, int delay)
+{
+ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
+PropertyAnimation_0_user_data->target = TargetObject;
+PropertyAnimation_0_user_data->imgset = (lv_img_dsc_t **)ui_imgset_;
+PropertyAnimation_0_user_data->imgset_size = sizeof(ui_imgset_)/(sizeof(lv_img_dsc_t*));
+PropertyAnimation_0_user_data->val = -1;
+lv_anim_t PropertyAnimation_0;
+lv_anim_init(&PropertyAnimation_0);
+lv_anim_set_time(&PropertyAnimation_0, 1000);
+lv_anim_set_user_data(&PropertyAnimation_0, PropertyAnimation_0_user_data);
+lv_anim_set_custom_exec_cb(&PropertyAnimation_0, _ui_anim_callback_set_y );
+lv_anim_set_values(&PropertyAnimation_0, 50, 0 );
+lv_anim_set_path_cb( &PropertyAnimation_0, lv_anim_path_linear);
+lv_anim_set_delay( &PropertyAnimation_0, delay + 0 );
+lv_anim_set_deleted_cb( &PropertyAnimation_0, _ui_anim_callback_free_user_data );
+lv_anim_set_playback_time(&PropertyAnimation_0, 0);
+lv_anim_set_playback_delay(&PropertyAnimation_0, 0);
+ lv_anim_set_repeat_count(&PropertyAnimation_0, 0);
+lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
+lv_anim_set_early_apply( &PropertyAnimation_0, false );
+ lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_y );
+lv_anim_start(&PropertyAnimation_0);
+
+}
+void icon_Animation( lv_obj_t *TargetObject, int delay)
+{
+ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
+PropertyAnimation_0_user_data->target = TargetObject;
+PropertyAnimation_0_user_data->imgset = (lv_img_dsc_t **)ui_imgset_;
+PropertyAnimation_0_user_data->imgset_size = sizeof(ui_imgset_)/(sizeof(lv_img_dsc_t*));
+PropertyAnimation_0_user_data->val = -1;
+lv_anim_t PropertyAnimation_0;
+lv_anim_init(&PropertyAnimation_0);
+lv_anim_set_time(&PropertyAnimation_0, 500);
+lv_anim_set_user_data(&PropertyAnimation_0, PropertyAnimation_0_user_data);
+lv_anim_set_custom_exec_cb(&PropertyAnimation_0, _ui_anim_callback_set_y );
+lv_anim_set_values(&PropertyAnimation_0, -50, 0 );
+lv_anim_set_path_cb( &PropertyAnimation_0, lv_anim_path_linear);
+lv_anim_set_delay( &PropertyAnimation_0, delay + 0 );
+lv_anim_set_deleted_cb( &PropertyAnimation_0, _ui_anim_callback_free_user_data );
+lv_anim_set_playback_time(&PropertyAnimation_0, 0);
+lv_anim_set_playback_delay(&PropertyAnimation_0, 0);
+ lv_anim_set_repeat_count(&PropertyAnimation_0, 0);
+lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
+lv_anim_set_early_apply( &PropertyAnimation_0, false );
+ lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_y );
+lv_anim_start(&PropertyAnimation_0);
+
+}
+void arc_Animation( lv_obj_t *TargetObject, int delay)
+{
+ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
+PropertyAnimation_0_user_data->target = TargetObject;
+PropertyAnimation_0_user_data->imgset = (lv_img_dsc_t **)ui_imgset_;
+PropertyAnimation_0_user_data->imgset_size = sizeof(ui_imgset_)/(sizeof(lv_img_dsc_t*));
+PropertyAnimation_0_user_data->val = -1;
+lv_anim_t PropertyAnimation_0;
+lv_anim_init(&PropertyAnimation_0);
+lv_anim_set_time(&PropertyAnimation_0, 2000);
+lv_anim_set_user_data(&PropertyAnimation_0, PropertyAnimation_0_user_data);
+lv_anim_set_custom_exec_cb(&PropertyAnimation_0, _ui_anim_callback_set_opacity );
+lv_anim_set_values(&PropertyAnimation_0, 0, 255 );
+lv_anim_set_path_cb( &PropertyAnimation_0, lv_anim_path_ease_in_out);
+lv_anim_set_delay( &PropertyAnimation_0, delay + 0 );
+lv_anim_set_deleted_cb( &PropertyAnimation_0, _ui_anim_callback_free_user_data );
+lv_anim_set_playback_time(&PropertyAnimation_0, 0);
+lv_anim_set_playback_delay(&PropertyAnimation_0, 0);
+ lv_anim_set_repeat_count(&PropertyAnimation_0, 0);
+lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
+lv_anim_set_early_apply( &PropertyAnimation_0, false );
+ lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_opacity );
+lv_anim_start(&PropertyAnimation_0);
+
+}
+void boot_Animation( lv_obj_t *TargetObject, int delay)
+{
+ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
+PropertyAnimation_0_user_data->target = TargetObject;
+PropertyAnimation_0_user_data->imgset = (lv_img_dsc_t **)ui_imgset_;
+PropertyAnimation_0_user_data->imgset_size = sizeof(ui_imgset_)/(sizeof(lv_img_dsc_t*));
+PropertyAnimation_0_user_data->val = -1;
+lv_anim_t PropertyAnimation_0;
+lv_anim_init(&PropertyAnimation_0);
+lv_anim_set_time(&PropertyAnimation_0, 1500);
+lv_anim_set_user_data(&PropertyAnimation_0, PropertyAnimation_0_user_data);
+lv_anim_set_custom_exec_cb(&PropertyAnimation_0, _ui_anim_callback_set_opacity );
+lv_anim_set_values(&PropertyAnimation_0, 0, 255 );
+lv_anim_set_path_cb( &PropertyAnimation_0, lv_anim_path_ease_in);
+lv_anim_set_delay( &PropertyAnimation_0, delay + 0 );
+lv_anim_set_deleted_cb( &PropertyAnimation_0, _ui_anim_callback_free_user_data );
+lv_anim_set_playback_time(&PropertyAnimation_0, 0);
+lv_anim_set_playback_delay(&PropertyAnimation_0, 0);
+ lv_anim_set_repeat_count(&PropertyAnimation_0, LV_ANIM_REPEAT_INFINITE );
+lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
+lv_anim_set_early_apply( &PropertyAnimation_0, false );
+ lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_opacity );
+lv_anim_start(&PropertyAnimation_0);
+
+}
+void loading_Animation( lv_obj_t *TargetObject, int delay)
+{
+ui_anim_user_data_t *PropertyAnimation_0_user_data = lv_mem_alloc(sizeof(ui_anim_user_data_t));
+PropertyAnimation_0_user_data->target = TargetObject;
+PropertyAnimation_0_user_data->imgset = (lv_img_dsc_t **)ui_imgset_;
+PropertyAnimation_0_user_data->imgset_size = sizeof(ui_imgset_)/(sizeof(lv_img_dsc_t*));
+PropertyAnimation_0_user_data->val = -1;
+lv_anim_t PropertyAnimation_0;
+lv_anim_init(&PropertyAnimation_0);
+lv_anim_set_time(&PropertyAnimation_0, 1000);
+lv_anim_set_user_data(&PropertyAnimation_0, PropertyAnimation_0_user_data);
+lv_anim_set_custom_exec_cb(&PropertyAnimation_0, _ui_anim_callback_set_image_angle );
+lv_anim_set_values(&PropertyAnimation_0, 0, 3600 );
+lv_anim_set_path_cb( &PropertyAnimation_0, lv_anim_path_linear);
+lv_anim_set_delay( &PropertyAnimation_0, delay + 0 );
+lv_anim_set_deleted_cb( &PropertyAnimation_0, _ui_anim_callback_free_user_data );
+lv_anim_set_playback_time(&PropertyAnimation_0, 0);
+lv_anim_set_playback_delay(&PropertyAnimation_0, 0);
+ lv_anim_set_repeat_count(&PropertyAnimation_0, LV_ANIM_REPEAT_INFINITE );
+lv_anim_set_repeat_delay(&PropertyAnimation_0, 0);
+lv_anim_set_early_apply( &PropertyAnimation_0, false );
+ lv_anim_set_get_value_cb(&PropertyAnimation_0, &_ui_anim_callback_get_image_angle );
+lv_anim_start(&PropertyAnimation_0);
+
+}
+
+///////////////////// FUNCTIONS ////////////////////
+void ui_event_Boot_Screen( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_SCREEN_LOADED) {
+      loading_Animation(ui_loading_img, 0);
+      boot_Animation(ui_boot_Image, 0);
+      bootScreen( e );
+      _ui_flag_modify( ui_loading_img, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+}
+}
+
+void ui_event_controlSettingScreen( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_SCREEN_LOAD_START) {
+      settingScreen( e );
+      icon_Animation(ui_settingscreenlabel, 0);
+      icon_Animation(ui_returnButton4, 0);
+}
+}
+
+void ui_event_returnButton4( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_screen_change( &ui_mainScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_mainScreen_screen_init);
+      _ui_screen_delete( &ui_controlSettingScreen);
+}
+}
+
+void ui_event_SettingCTRL( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_screen_change( &ui_processSettingScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_processSettingScreen_screen_init);
+      _ui_screen_delete( &ui_controlSettingScreen);
+}
+}
+
+void ui_event_Advanced_Setting_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_screen_change( &ui_addvansedSettingScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_addvansedSettingScreen_screen_init);
+      _ui_screen_delete( &ui_controlSettingScreen);
+}
+}
+
+void ui_event_TurnOffCTRL( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      turnOffCtrl_Checked( e );
+}
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  !lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      turnOffCtrl_Unchecked( e );
+}
+}
+
+void ui_event_Status_info_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_screen_change( &ui_statusScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_statusScreen_screen_init);
+      _ui_screen_delete( &ui_controlSettingScreen);
+}
+}
+
+void ui_event_processSettingScreen( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_SCREEN_LOAD_START) {
+      processSettingScreen( e );
+      icon_Animation(ui_returnButton5, 0);
+      icon_Animation(ui_ProcessSettingCTRL, 0);
+      icon_Animation(ui_Setting_Save_btn, 0);
+      icon_Animation(ui_Setting_Save_btn_label, 0);
+}
+}
+
+void ui_event_returnButton5( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_screen_change( &ui_controlSettingScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_controlSettingScreen_screen_init);
+      _ui_screen_delete( &ui_processSettingScreen);
+}
+}
+
+void ui_event_Setting_Save_btn( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      submit_process_setting( e );
+}
+}
+
+void ui_event_Compressor_Range_Plus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_Compressor_Range_Spinbox, 1);
+}
+}
+
+void ui_event_Compressor_Range_Minus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_Compressor_Range_Spinbox, -1);
+}
+}
+
+void ui_event_Compressor_Offset_Plus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_Compressor_Offste_Spinbox, 1);
+}
+}
+
+void ui_event_Compressor_Offset_Minus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_Compressor_Offste_Spinbox, -1);
+}
+}
+
+void ui_event_High_Temp_Alarm_Plus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_High_Temp_Alarm_Spinbox, 1);
+}
+}
+
+void ui_event_High_Temp_Alarm_Minus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_High_Temp_Alarm_Spinbox, -1);
+}
+}
+
+void ui_event_PressureAlarmSwitch( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_flag_modify( ui_PressureAlarmSwitch_OFFlabel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_PressureAlarmSwitch_ONlabel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+}
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  !lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_flag_modify( ui_PressureAlarmSwitch_OFFlabel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_PressureAlarmSwitch_ONlabel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_TempAlarmSwitch( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_state_modify( ui_High_Temp_Alarm_Plus_Button, LV_STATE_DISABLED, _UI_MODIFY_STATE_REMOVE);
+      _ui_state_modify( ui_High_Temp_Alarm_Minus_Button, LV_STATE_DISABLED, _UI_MODIFY_STATE_REMOVE);
+      _ui_state_modify( ui_High_Temp_Alarm_Spinbox, LV_STATE_DISABLED, _UI_MODIFY_STATE_REMOVE);
+      _ui_flag_modify( ui_TempAlarmSwitch_OFFlabel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_TempAlarmSwitch_ONlabel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+}
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  !lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_state_modify( ui_High_Temp_Alarm_Spinbox, LV_STATE_DISABLED, _UI_MODIFY_STATE_ADD);
+      _ui_state_modify( ui_High_Temp_Alarm_Plus_Button, LV_STATE_DISABLED, _UI_MODIFY_STATE_ADD);
+      _ui_state_modify( ui_High_Temp_Alarm_Minus_Button, LV_STATE_DISABLED, _UI_MODIFY_STATE_ADD);
+      _ui_flag_modify( ui_TempAlarmSwitch_OFFlabel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_TempAlarmSwitch_ONlabel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_addvansedSettingScreen( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_SCREEN_LOAD_START) {
+      addvancedSettingScreen( e );
+      icon_Animation(ui_Advanced_Setting_Label, 0);
+      icon_Animation(ui_Setting_Save_btn_in_advanced_Screen, 0);
+      icon_Animation(ui_returnButton14, 0);
+      icon_Animation(ui_Setting_Save_btn_label_advanced_Screen, 0);
+}
+}
+
+void ui_event_returnButton14( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_screen_change( &ui_controlSettingScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_controlSettingScreen_screen_init);
+      _ui_screen_delete( &ui_addvansedSettingScreen);
+}
+}
+
+void ui_event_Setting_Save_btn_in_advanced_Screen( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      submit_advance_setting( e );
+}
+}
+
+void ui_event_TabView1( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      TabView1AddvancedSetting( e );
+}
+}
+
+void ui_event_AntiFreeze_Temp_Range_Plus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_AntiFreeze_Temp_Range_Spinbox, 1);
+}
+}
+
+void ui_event_AntiFreeze_Temp_Range_Minus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_AntiFreeze_Temp_Range_Spinbox, -1);
+}
+}
+
+void ui_event_AntiFreeze_Temp_Offset_Plus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_AntiFreeze_Temp_Offset_Spinbox, 1);
+}
+}
+
+void ui_event_AntiFreeze_Temp_Offset_Minus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_AntiFreeze_Temp_Offset_Spinbox, -1);
+}
+}
+
+void ui_event_Compressor_Rest_Time_Plus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_Compressor_Rest_Time_Spinbox, 1);
+}
+}
+
+void ui_event_Compressor_Rest_Time_Minus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_Compressor_Rest_Time_Spinbox, -1);
+}
+}
+
+void ui_event_Filter_Alarm_Plus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_Filter_Alarm_Spinbox, 1);
+}
+}
+
+void ui_event_Filter_Alarm_Minus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_Filter_Alarm_Spinbox, -1);
+}
+}
+
+void ui_event_fan_2_range_Plus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_fan_2_range_Spinbox, 1);
+}
+}
+
+void ui_event_fan_2_range_Minus_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_spinbox_step( ui_fan_2_range_Spinbox, -1);
+}
+}
+
+void ui_event_fan_2_Switch( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_flag_modify( ui_disable_fan_2_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_enable_fan_2_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_state_modify( ui_fan_2_range_Minus_Button, LV_STATE_DISABLED, _UI_MODIFY_STATE_REMOVE);
+      _ui_state_modify( ui_fan_2_range_Plus_Button, LV_STATE_DISABLED, _UI_MODIFY_STATE_REMOVE);
+      _ui_state_modify( ui_fan_2_range_Spinbox, LV_STATE_DISABLED, _UI_MODIFY_STATE_REMOVE);
+}
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  !lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_state_modify( ui_fan_2_range_Plus_Button, LV_STATE_DISABLED, _UI_MODIFY_STATE_ADD);
+      _ui_state_modify( ui_fan_2_range_Spinbox, LV_STATE_DISABLED, _UI_MODIFY_STATE_ADD);
+      _ui_state_modify( ui_fan_2_range_Minus_Button, LV_STATE_DISABLED, _UI_MODIFY_STATE_ADD);
+      _ui_flag_modify( ui_disable_fan_2_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_enable_fan_2_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_door_alarm_status_Switch( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  !lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_flag_modify( ui_disable_door_alarm_status_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_enable_door_alarm_status_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_flag_modify( ui_enable_door_alarm_status_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_disable_door_alarm_status_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_filter_alarm_status_Switch( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  !lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_flag_modify( ui_disable_filter_alarm_status_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_enable_filter_alarm_status_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+if ( event_code == LV_EVENT_VALUE_CHANGED &&  lv_obj_has_state(target,LV_STATE_CHECKED)  ) {
+      _ui_flag_modify( ui_enable_filter_alarm_status_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_disable_filter_alarm_status_Label, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_Sensor_Setup_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_sensors_setup_container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_Sensor_Setup_Notice_Container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_returnButton14, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_open_factory_reset_panel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_TabView1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_open_factory_reset_panel( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_factory_reset_container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_TabView1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_returnButton14, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_DEVICE_RESTART_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      restart_device( e );
+}
+}
+
+void ui_event_submitResetbtn( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_Sensor_Setup_Notice_Container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Sensor_Setup_main_Container_1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      reseting_sensors_address( e );
+}
+}
+
+void ui_event_CancelResetbtn( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_sensors_setup_container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_open_factory_reset_panel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_returnButton14, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_TabView1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+}
+}
+
+void ui_event_returnButton668( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_Sensor_Setup_main_Container_1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Sensor_Setup_Notice_Container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_success_disconnect_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_disconnect_error_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_2, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_check_and_next_btn_1( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      sensors_disconnect_check( e );
+}
+}
+
+void ui_event_returnButton6987( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_Sensor_Setup_main_Container_2, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Sensor_Setup_Notice_Container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_inlet_setup_success_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_inlet_setup_error_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_4, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_3, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_success_disconnect_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_disconnect_error_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_2, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_check_and_next_inlet_btn( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      check_set_Inlet( e );
+}
+}
+
+void ui_event_returnButton64( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_Sensor_Setup_main_Container_3, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Sensor_Setup_Notice_Container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_Outlet_setup_success_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Outlet_setup_error_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_6, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_5, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_inlet_setup_success_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_inlet_setup_error_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_4, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_3, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_check_and_next_Outlet_btn( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      check_set_Outlet( e );
+}
+}
+
+void ui_event_returnButton625( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_Sensor_Setup_main_Container_4, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Sensor_Setup_Notice_Container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_Antifreeze_setup_success_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Antifreeze_setup_error_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_8, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_7, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Outlet_setup_success_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Outlet_setup_error_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_6, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_5, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_check_and_next_Antifreeze_btn( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      check_set_Antifreeze( e );
+}
+}
+
+void ui_event_returnButton614987( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_Sensor_Setup_main_Container_5, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Sensor_Setup_Notice_Container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_Detail_Success_Status_message_10, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_9, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Filter_setup_success_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Filter_setup_error_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Antifreeze_setup_success_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Antifreeze_setup_error_icon, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_8, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Detail_Success_Status_message_7, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_check_and_next_Filter_btn( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      check_set_Filter( e );
+}
+}
+
+void ui_event_close_factory_container( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_factory_reset_container, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_returnButton14, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_TabView1, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+}
+}
+
+void ui_event_submit_factory( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      goToFactoryReseting( e );
+}
+}
+
+void ui_event_statusScreen( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_SCREEN_LOAD_START) {
+      satusScreen( e );
+      icon_Animation(ui_returnButton3, 0);
+      icon_Animation(ui_statusscreenlabel, 0);
+}
+}
+
+void ui_event_returnButton3( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_screen_change( &ui_controlSettingScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_controlSettingScreen_screen_init);
+      _ui_screen_delete( &ui_statusScreen);
+}
+}
+
+void ui_event_tempStatusButton( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_tempStatusPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_returnButton11( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_tempStatusPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+}
+}
+
+void ui_event_alarmStatusButton( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_alarmStatusPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_returnButton2( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_alarmStatusPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+}
+}
+
+void ui_event_relayStatusButton( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_relayStatusPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_returnButton7( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_relayStatusPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_networkStatusButton( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_networkStatusPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      show_QR_code( e );
+}
+}
+
+void ui_event_returnButton8( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_networkStatusPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_QRcode_Tab, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_Hide_QR_Code_Button, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_show_QR_Code_Button, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+}
+}
+
+void ui_event_show_QR_Code_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_QRcode_Tab, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_Hide_QR_Code_Button, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_show_QR_Code_Button, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_Hide_QR_Code_Button( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_QRcode_Tab, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_show_QR_Code_Button, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_Hide_QR_Code_Button, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_deviceInfoButton( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_deviceInfoPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_returnButton9( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_deviceInfoPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_serviceInfoButton( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_serviceInfoPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_returnButton10( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_flag_modify( ui_serviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_deviceInfoButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_networkStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_relayStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_alarmStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_tempStatusButton, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_REMOVE);
+      _ui_flag_modify( ui_serviceInfoPanel, LV_OBJ_FLAG_HIDDEN, _UI_MODIFY_FLAG_ADD);
+}
+}
+
+void ui_event_mainScreen( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_SCREEN_LOAD_START) {
+      mainScreen( e );
+      arc_Animation(ui_inlet_Arc, 0);
+      arc_Animation(ui_outlet_Arc, 0);
+      logo_Animation(ui_Logo, 0);
+      icon_Animation(ui_Door_Close_Icon, 0);
+      icon_Animation(ui_Door_Open_Icon, 0);
+      icon_Animation(ui_High_Pressure_Icon, 0);
+      icon_Animation(ui_Low_Pressure_Icon, 0);
+      icon_Animation(ui_Low_Temp_Icon, 0);
+      icon_Animation(ui_High_Temp_Icon, 0);
+      icon_Animation(ui_Compressor_OFF_Icon, 0);
+      icon_Animation(ui_Compressor_ON_Icon, 0);
+      icon_Animation(ui_Cooler_ON_Icon, 0);
+      icon_Animation(ui_Cooler_OFF_Icon, 0);
+      arc_Animation(ui_outletMainsScreen, 0);
+      arc_Animation(ui_inletMainsScreen, 0);
+      icon_Animation(ui_MenuButton, 0);
+}
+}
+
+void ui_event_MenuButton( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+if ( event_code == LV_EVENT_RELEASED) {
+      _ui_screen_change( &ui_controlSettingScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_controlSettingScreen_screen_init);
+      _ui_screen_delete( &ui_mainScreen);
+}
+}
+
+void ui_event_inlet_Arc( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+
+if ( event_code == LV_EVENT_VALUE_CHANGED) {
+      _ui_arc_set_text_value( ui_inletMainsScreen, target, "", " C°\n\nINTLET");
+}
+}
+
+void ui_event_outlet_Arc( lv_event_t * e) {
+    lv_event_code_t event_code = lv_event_get_code(e);lv_obj_t * target = lv_event_get_target(e);
+
+if ( event_code == LV_EVENT_VALUE_CHANGED) {
+      _ui_arc_set_text_value( ui_outletMainsScreen, target, "OUTLET\n", " C°\n\nOUTLET");
+}
+}
+
+///////////////////// SCREENS ////////////////////
+
+void ui_init( void )
+{
+lv_disp_t *dispp = lv_disp_get_default();
+lv_theme_t *theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED), false, LV_FONT_DEFAULT);
+lv_disp_set_theme(dispp, theme);
+ui_Boot_Screen_screen_init();
+ui_controlSettingScreen_screen_init();
+ui_processSettingScreen_screen_init();
+ui_addvansedSettingScreen_screen_init();
+ui_statusScreen_screen_init();
+ui_mainScreen_screen_init();
+ui____initial_actions0 = lv_obj_create(NULL);
+lv_disp_load_scr( ui_Boot_Screen);
+}

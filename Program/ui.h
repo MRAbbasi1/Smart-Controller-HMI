@@ -1,0 +1,692 @@
+// ui.h
+
+#ifndef _SQUARELINE_PROJECT_UI_H
+#define _SQUARELINE_PROJECT_UI_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+    #include "lvgl.h"
+
+#include "ui_helpers.h"
+#include "ui_events.h"
+
+void effect_Animation( lv_obj_t *TargetObject, int delay);
+void logo_Animation( lv_obj_t *TargetObject, int delay);
+void icon_Animation( lv_obj_t *TargetObject, int delay);
+void arc_Animation( lv_obj_t *TargetObject, int delay);
+void boot_Animation( lv_obj_t *TargetObject, int delay);
+void loading_Animation( lv_obj_t *TargetObject, int delay);
+
+// SCREEN: ui_Boot_Screen
+void ui_Boot_Screen_screen_init(void);
+void ui_event_Boot_Screen( lv_event_t * e);
+extern lv_obj_t *ui_Boot_Screen;
+extern lv_obj_t *ui_boot_Image;
+extern lv_obj_t *ui_loading_img;
+// CUSTOM VARIABLES
+extern lv_obj_t *uic_Boot_Screen;
+extern lv_obj_t *uic_boot_Image;
+extern lv_obj_t *uic_loading_img;
+
+// SCREEN: ui_controlSettingScreen
+void ui_controlSettingScreen_screen_init(void);
+void ui_event_controlSettingScreen( lv_event_t * e);
+extern lv_obj_t *ui_controlSettingScreen;
+void ui_event_returnButton4( lv_event_t * e);
+extern lv_obj_t *ui_returnButton4;
+extern lv_obj_t *ui_settingscreenlabel;
+void ui_event_SettingCTRL( lv_event_t * e);
+extern lv_obj_t *ui_SettingCTRL;
+void ui_event_Advanced_Setting_Button( lv_event_t * e);
+extern lv_obj_t *ui_Advanced_Setting_Button;
+void ui_event_TurnOffCTRL( lv_event_t * e);
+extern lv_obj_t *ui_TurnOffCTRL;
+void ui_event_Status_info_Button( lv_event_t * e);
+extern lv_obj_t *ui_Status_info_Button;
+extern lv_obj_t *ui_COOLER_IS__ON;
+extern lv_obj_t *ui_COOLER_IS__OFF;
+// CUSTOM VARIABLES
+extern lv_obj_t *uic_controlSettingScreen;
+extern lv_obj_t *uic_returnButton4;
+extern lv_obj_t *uic_settingscreenlabel;
+extern lv_obj_t *uic_SettingCTRL;
+extern lv_obj_t *uic_Advanced_Setting_Button;
+extern lv_obj_t *uic_TurnOffCTRL;
+extern lv_obj_t *uic_Status_info_Button;
+extern lv_obj_t *uic_COOLER_IS__ON;
+extern lv_obj_t *uic_COOLER_IS__OFF;
+
+// SCREEN: ui_processSettingScreen
+void ui_processSettingScreen_screen_init(void);
+void ui_event_processSettingScreen( lv_event_t * e);
+extern lv_obj_t *ui_processSettingScreen;
+void ui_event_returnButton5( lv_event_t * e);
+extern lv_obj_t *ui_returnButton5;
+extern lv_obj_t *ui_ProcessSettingCTRL;
+void ui_event_Setting_Save_btn( lv_event_t * e);
+extern lv_obj_t *ui_Setting_Save_btn;
+extern lv_obj_t *ui_Setting_Save_btn_label;
+extern lv_obj_t *ui_ProcessScreenContainer1;
+extern lv_obj_t *ui_Compressor_Range_Spinbox;
+void ui_event_Compressor_Range_Plus_Button( lv_event_t * e);
+extern lv_obj_t *ui_Compressor_Range_Plus_Button;
+void ui_event_Compressor_Range_Minus_Button( lv_event_t * e);
+extern lv_obj_t *ui_Compressor_Range_Minus_Button;
+extern lv_obj_t *ui_lable3951;
+extern lv_obj_t *ui_ProcessScreenContainer2;
+extern lv_obj_t *ui_Compressor_Offste_Spinbox;
+void ui_event_Compressor_Offset_Plus_Button( lv_event_t * e);
+extern lv_obj_t *ui_Compressor_Offset_Plus_Button;
+void ui_event_Compressor_Offset_Minus_Button( lv_event_t * e);
+extern lv_obj_t *ui_Compressor_Offset_Minus_Button;
+extern lv_obj_t *ui_lable39854;
+extern lv_obj_t *ui_ProcessScreenContainer3;
+extern lv_obj_t *ui_High_Temp_Alarm_Spinbox;
+void ui_event_High_Temp_Alarm_Plus_Button( lv_event_t * e);
+extern lv_obj_t *ui_High_Temp_Alarm_Plus_Button;
+void ui_event_High_Temp_Alarm_Minus_Button( lv_event_t * e);
+extern lv_obj_t *ui_High_Temp_Alarm_Minus_Button;
+extern lv_obj_t *ui_lable37892;
+extern lv_obj_t *ui_ProcessScreenContainer4;
+void ui_event_PressureAlarmSwitch( lv_event_t * e);
+extern lv_obj_t *ui_PressureAlarmSwitch;
+extern lv_obj_t *ui_PressureAlarmSwitch_ONlabel;
+extern lv_obj_t *ui_PressureAlarmSwitch_OFFlabel;
+extern lv_obj_t *ui_ProcessScreenContainer5;
+void ui_event_TempAlarmSwitch( lv_event_t * e);
+extern lv_obj_t *ui_TempAlarmSwitch;
+extern lv_obj_t *ui_TempAlarmSwitch_ONlabel;
+extern lv_obj_t *ui_TempAlarmSwitch_OFFlabel;
+extern lv_obj_t *ui_High_Temp_Alarm_Label;
+extern lv_obj_t *ui_High_Pressure_Alarm_Label;
+extern lv_obj_t *ui_Compressor_Offset_Label;
+extern lv_obj_t *ui_Compressor_Range_Label;
+extern lv_obj_t *ui_High_Temp_Alarm_Switch_Label;
+// CUSTOM VARIABLES
+extern lv_obj_t *uic_processSettingScreen;
+extern lv_obj_t *uic_returnButton5;
+extern lv_obj_t *uic_ProcessSettingCTRL;
+extern lv_obj_t *uic_Setting_Save_btn;
+extern lv_obj_t *uic_Setting_Save_btn_label;
+extern lv_obj_t *uic_ProcessScreenContainer1;
+extern lv_obj_t *uic_Compressor_Range_Spinbox;
+extern lv_obj_t *uic_Compressor_Range_Plus_Button;
+extern lv_obj_t *uic_Compressor_Range_Minus_Button;
+extern lv_obj_t *uic_lable3951;
+extern lv_obj_t *uic_ProcessScreenContainer2;
+extern lv_obj_t *uic_Compressor_Offste_Spinbox;
+extern lv_obj_t *uic_Compressor_Offset_Plus_Button;
+extern lv_obj_t *uic_Compressor_Offset_Minus_Button;
+extern lv_obj_t *uic_lable39854;
+extern lv_obj_t *uic_ProcessScreenContainer3;
+extern lv_obj_t *uic_High_Temp_Alarm_Spinbox;
+extern lv_obj_t *uic_High_Temp_Alarm_Plus_Button;
+extern lv_obj_t *uic_High_Temp_Alarm_Minus_Button;
+extern lv_obj_t *uic_lable37892;
+extern lv_obj_t *uic_ProcessScreenContainer4;
+extern lv_obj_t *uic_PressureAlarmSwitch;
+extern lv_obj_t *uic_PressureAlarmSwitch_ONlabel;
+extern lv_obj_t *uic_PressureAlarmSwitch_OFFlabel;
+extern lv_obj_t *uic_ProcessScreenContainer5;
+extern lv_obj_t *uic_TempAlarmSwitch;
+extern lv_obj_t *uic_TempAlarmSwitch_ONlabel;
+extern lv_obj_t *uic_TempAlarmSwitch_OFFlabel;
+extern lv_obj_t *uic_High_Temp_Alarm_Label;
+extern lv_obj_t *uic_High_Pressure_Alarm_Label;
+extern lv_obj_t *uic_Compressor_Offset_Label;
+extern lv_obj_t *uic_Compressor_Range_Label;
+extern lv_obj_t *uic_High_Temp_Alarm_Label;
+
+// SCREEN: ui_addvansedSettingScreen
+void ui_addvansedSettingScreen_screen_init(void);
+void ui_event_addvansedSettingScreen( lv_event_t * e);
+extern lv_obj_t *ui_addvansedSettingScreen;
+void ui_event_returnButton14( lv_event_t * e);
+extern lv_obj_t *ui_returnButton14;
+extern lv_obj_t *ui_Advanced_Setting_Label;
+void ui_event_Setting_Save_btn_in_advanced_Screen( lv_event_t * e);
+extern lv_obj_t *ui_Setting_Save_btn_in_advanced_Screen;
+extern lv_obj_t *ui_Setting_Save_btn_label_advanced_Screen;
+void ui_event_TabView1( lv_event_t * e);
+extern lv_obj_t *ui_TabView1;
+extern lv_obj_t *ui_tab1;
+extern lv_obj_t *ui_AdvancedScreenContainer1;
+extern lv_obj_t *ui_AntiFreeze_Temp_Range_Spinbox;
+void ui_event_AntiFreeze_Temp_Range_Plus_Button( lv_event_t * e);
+extern lv_obj_t *ui_AntiFreeze_Temp_Range_Plus_Button;
+void ui_event_AntiFreeze_Temp_Range_Minus_Button( lv_event_t * e);
+extern lv_obj_t *ui_AntiFreeze_Temp_Range_Minus_Button;
+extern lv_obj_t *ui_lable25646;
+extern lv_obj_t *ui_AdvancedScreenContainer2;
+extern lv_obj_t *ui_AntiFreeze_Temp_Offset_Spinbox;
+void ui_event_AntiFreeze_Temp_Offset_Plus_Button( lv_event_t * e);
+extern lv_obj_t *ui_AntiFreeze_Temp_Offset_Plus_Button;
+void ui_event_AntiFreeze_Temp_Offset_Minus_Button( lv_event_t * e);
+extern lv_obj_t *ui_AntiFreeze_Temp_Offset_Minus_Button;
+extern lv_obj_t *ui_lable2235474;
+extern lv_obj_t *ui_AdvancedScreenContainer3;
+extern lv_obj_t *ui_Compressor_Rest_Time_Spinbox;
+void ui_event_Compressor_Rest_Time_Plus_Button( lv_event_t * e);
+extern lv_obj_t *ui_Compressor_Rest_Time_Plus_Button;
+void ui_event_Compressor_Rest_Time_Minus_Button( lv_event_t * e);
+extern lv_obj_t *ui_Compressor_Rest_Time_Minus_Button;
+extern lv_obj_t *ui_minutelable11;
+extern lv_obj_t *ui_AdvancedScreenContainer4;
+extern lv_obj_t *ui_Filter_Alarm_Spinbox;
+void ui_event_Filter_Alarm_Plus_Button( lv_event_t * e);
+extern lv_obj_t *ui_Filter_Alarm_Plus_Button;
+void ui_event_Filter_Alarm_Minus_Button( lv_event_t * e);
+extern lv_obj_t *ui_Filter_Alarm_Minus_Button;
+extern lv_obj_t *ui_lable29854;
+extern lv_obj_t *ui_Compressor_Rest_Time_Label;
+extern lv_obj_t *ui_AntiFreeze_Temp_Offset_Label;
+extern lv_obj_t *ui_AntiFreeze_Temp_Range_Label;
+extern lv_obj_t *ui_Filter_Alarm__Range_Label;
+extern lv_obj_t *ui_tab2;
+extern lv_obj_t *ui_AdvancedScreenContainer5;
+extern lv_obj_t *ui_fan_2_range_Spinbox;
+void ui_event_fan_2_range_Plus_Button( lv_event_t * e);
+extern lv_obj_t *ui_fan_2_range_Plus_Button;
+void ui_event_fan_2_range_Minus_Button( lv_event_t * e);
+extern lv_obj_t *ui_fan_2_range_Minus_Button;
+void ui_event_fan_2_Switch( lv_event_t * e);
+extern lv_obj_t *ui_fan_2_Switch;
+extern lv_obj_t *ui_enable_fan_2_Label;
+extern lv_obj_t *ui_disable_fan_2_Label;
+extern lv_obj_t *ui_lable29988;
+extern lv_obj_t *ui_fan_2_range_Label;
+extern lv_obj_t *ui_AdvancedScreenContainer6;
+void ui_event_door_alarm_status_Switch( lv_event_t * e);
+extern lv_obj_t *ui_door_alarm_status_Switch;
+extern lv_obj_t *ui_enable_door_alarm_status_Label;
+extern lv_obj_t *ui_disable_door_alarm_status_Label;
+extern lv_obj_t *ui_door_function_and_alarm_Label;
+extern lv_obj_t *ui_AdvancedScreenContainer7;
+void ui_event_filter_alarm_status_Switch( lv_event_t * e);
+extern lv_obj_t *ui_filter_alarm_status_Switch;
+extern lv_obj_t *ui_enable_filter_alarm_status_Label;
+extern lv_obj_t *ui_disable_filter_alarm_status_Label;
+extern lv_obj_t *ui_Filter_alarm_switch_Label;
+extern lv_obj_t *ui_tab3;
+extern lv_obj_t *ui_Label456;
+void ui_event_Sensor_Setup_Button( lv_event_t * e);
+extern lv_obj_t *ui_Sensor_Setup_Button;
+extern lv_obj_t *ui_Sensor_Setup_Button_Label;
+extern lv_obj_t *ui_Label123;
+void ui_event_open_factory_reset_panel( lv_event_t * e);
+extern lv_obj_t *ui_open_factory_reset_panel;
+extern lv_obj_t *ui_factory_reset_btn_Label;
+void ui_event_DEVICE_RESTART_Button( lv_event_t * e);
+extern lv_obj_t *ui_DEVICE_RESTART_Button;
+extern lv_obj_t *ui_DEVICE_RESTART_Button_Label;
+extern lv_obj_t *ui_sensors_setup_container;
+extern lv_obj_t *ui_Sensor_Setup_Notice_Container;
+extern lv_obj_t *ui_Reset_Notice_Label;
+void ui_event_submitResetbtn( lv_event_t * e);
+extern lv_obj_t *ui_submitResetbtn;
+void ui_event_CancelResetbtn( lv_event_t * e);
+extern lv_obj_t *ui_CancelResetbtn;
+extern lv_obj_t *ui_submitResetbtn_Label;
+extern lv_obj_t *ui_CancelResetbtn_Label;
+extern lv_obj_t *ui_SensorSetupDangerIcon;
+extern lv_obj_t *ui_Reseting_Sensors_Notice_2;
+extern lv_obj_t *ui_Sensor_Setup_main_Container_1;
+void ui_event_returnButton668( lv_event_t * e);
+extern lv_obj_t *ui_returnButton668;
+extern lv_obj_t *ui_disconnect_sensors_Label;
+extern lv_obj_t *ui_Detail_Success_Status_message_1;
+extern lv_obj_t *ui_Detail_Success_Status_message_2;
+extern lv_obj_t *ui_disconnect_error_icon;
+extern lv_obj_t *ui_success_disconnect_icon;
+void ui_event_check_and_next_btn_1( lv_event_t * e);
+extern lv_obj_t *ui_check_and_next_btn_1;
+extern lv_obj_t *ui_check_and_next_btn_1_label;
+extern lv_obj_t *ui_Sensor_Setup_main_Container_2;
+void ui_event_returnButton6987( lv_event_t * e);
+extern lv_obj_t *ui_returnButton6987;
+extern lv_obj_t *ui_Connect_Inlet_Label;
+extern lv_obj_t *ui_Detail_Success_Status_message_3;
+extern lv_obj_t *ui_Detail_Success_Status_message_4;
+extern lv_obj_t *ui_inlet_setup_error_icon;
+extern lv_obj_t *ui_inlet_setup_success_icon;
+void ui_event_check_and_next_inlet_btn( lv_event_t * e);
+extern lv_obj_t *ui_check_and_next_inlet_btn;
+extern lv_obj_t *ui_check_and_next_inlet_btn_label;
+extern lv_obj_t *ui_Sensor_Setup_main_Container_3;
+void ui_event_returnButton64( lv_event_t * e);
+extern lv_obj_t *ui_returnButton64;
+extern lv_obj_t *ui_Connect_Outlet_Label;
+extern lv_obj_t *ui_Detail_Success_Status_message_5;
+extern lv_obj_t *ui_Detail_Success_Status_message_6;
+extern lv_obj_t *ui_Outlet_setup_error_icon;
+extern lv_obj_t *ui_Outlet_setup_success_icon;
+void ui_event_check_and_next_Outlet_btn( lv_event_t * e);
+extern lv_obj_t *ui_check_and_next_Outlet_btn;
+extern lv_obj_t *ui_check_and_next_Outlet_btn_label;
+extern lv_obj_t *ui_Sensor_Setup_main_Container_4;
+void ui_event_returnButton625( lv_event_t * e);
+extern lv_obj_t *ui_returnButton625;
+extern lv_obj_t *ui_Connect_Antifreeze_Label;
+extern lv_obj_t *ui_Detail_Success_Status_message_7;
+extern lv_obj_t *ui_Detail_Success_Status_message_8;
+extern lv_obj_t *ui_Antifreeze_setup_error_icon;
+extern lv_obj_t *ui_Antifreeze_setup_success_icon;
+void ui_event_check_and_next_Antifreeze_btn( lv_event_t * e);
+extern lv_obj_t *ui_check_and_next_Antifreeze_btn;
+extern lv_obj_t *ui_check_and_next_Antifreeze_btn_label;
+extern lv_obj_t *ui_Sensor_Setup_main_Container_5;
+void ui_event_returnButton614987( lv_event_t * e);
+extern lv_obj_t *ui_returnButton614987;
+extern lv_obj_t *ui_Connect_Filter_Label;
+extern lv_obj_t *ui_Detail_Success_Status_message_9;
+extern lv_obj_t *ui_Detail_Success_Status_message_10;
+extern lv_obj_t *ui_Filter_setup_error_icon;
+extern lv_obj_t *ui_Filter_setup_success_icon;
+void ui_event_check_and_next_Filter_btn( lv_event_t * e);
+extern lv_obj_t *ui_check_and_next_Filter_btn;
+extern lv_obj_t *ui_check_and_next_Filter_btn_label;
+extern lv_obj_t *ui_Sensor_Setup_main_Container_6;
+extern lv_obj_t *ui_sensor_setup_finish_label;
+extern lv_obj_t *ui_sensor_setup_finish_icon;
+extern lv_obj_t *ui_factory_reset_container;
+extern lv_obj_t *ui_reset_factory_notice_text;
+void ui_event_close_factory_container( lv_event_t * e);
+extern lv_obj_t *ui_close_factory_container;
+extern lv_obj_t *ui_Label275;
+void ui_event_submit_factory( lv_event_t * e);
+extern lv_obj_t *ui_submit_factory;
+extern lv_obj_t *ui_Label1863;
+// CUSTOM VARIABLES
+extern lv_obj_t *uic_addvansedSettingScreen;
+extern lv_obj_t *uic_returnButton14;
+extern lv_obj_t *uic_Advanced_Setting_Label;
+extern lv_obj_t *uic_Setting_Save_btn_in_advanced_Screen;
+extern lv_obj_t *uic_Setting_Save_btn_label_advanced_Screen;
+extern lv_obj_t *uic_TabView1;
+extern lv_obj_t *uic_AdvancedScreenContainer1;
+extern lv_obj_t *uic_AntiFreeze_Temp_Range_Spinbox;
+extern lv_obj_t *uic_AntiFreeze_Temp_Range_Plus_Button;
+extern lv_obj_t *uic_AntiFreeze_Temp_Range_Minus_Button;
+extern lv_obj_t *uic_lable25646;
+extern lv_obj_t *uic_AdvancedScreenContainer2;
+extern lv_obj_t *uic_AntiFreeze_Temp_Offset_Spinbox;
+extern lv_obj_t *uic_AntiFreeze_Temp_Offset_Plus_Button;
+extern lv_obj_t *uic_AntiFreeze_Temp_Offset_Minus_Button;
+extern lv_obj_t *uic_lable2235474;
+extern lv_obj_t *uic_AdvancedScreenContainer3;
+extern lv_obj_t *uic_Compressor_Rest_Time_Spinbox;
+extern lv_obj_t *uic_Compressor_Rest_Time_Plus_Button;
+extern lv_obj_t *uic_Compressor_Rest_Time_Minus_Button;
+extern lv_obj_t *uic_minutelable11;
+extern lv_obj_t *uic_AdvancedScreenContainer4;
+extern lv_obj_t *uic_Filter_Alarm_Spinbox;
+extern lv_obj_t *uic_Filter_Alarm_Plus_Button;
+extern lv_obj_t *uic_Filter_Alarm_Minus_Button;
+extern lv_obj_t *uic_lable29854;
+extern lv_obj_t *uic_Compressor_Rest_Time_Label;
+extern lv_obj_t *uic_AntiFreeze_Temp_Offset_Label;
+extern lv_obj_t *uic_AntiFreeze_Temp_Range_Label;
+extern lv_obj_t *uic_Filter_Alarm__Range_Label;
+extern lv_obj_t *uic_AdvancedScreenContainer5;
+extern lv_obj_t *uic_fan_2_range_Spinbox;
+extern lv_obj_t *uic_fan_2_range_Plus_Button;
+extern lv_obj_t *uic_fan_2_range_Minus_Button;
+extern lv_obj_t *uic_fan_2_Switch;
+extern lv_obj_t *uic_enable_fan_2_Label;
+extern lv_obj_t *uic_disable_fan_2_Label;
+extern lv_obj_t *uic_lable29988;
+extern lv_obj_t *uic_fan_2_range_Label;
+extern lv_obj_t *uic_AdvancedScreenContainer6;
+extern lv_obj_t *uic_door_alarm_status_Switch;
+extern lv_obj_t *uic_enable_door_alarm_status_Label;
+extern lv_obj_t *uic_disable_door_alarm_status_Label;
+extern lv_obj_t *uic_door_function_and_alarm_Label;
+extern lv_obj_t *uic_AdvancedScreenContainer7;
+extern lv_obj_t *uic_filter_alarm_status_Switch;
+extern lv_obj_t *uic_enable_filter_alarm_status_Label;
+extern lv_obj_t *uic_disable_filter_alarm_status_Label;
+extern lv_obj_t *uic_Filter_alarm_switch_Label;
+extern lv_obj_t *uic_Label456;
+extern lv_obj_t *uic_Sensor_Setup_Button;
+extern lv_obj_t *uic_Sensor_Setup_Button_Label;
+extern lv_obj_t *uic_Label123;
+extern lv_obj_t *uic_open_factory_reset_panel;
+extern lv_obj_t *uic_factory_reset_btn_Label;
+extern lv_obj_t *uic_DEVICE_RESTART_Button;
+extern lv_obj_t *uic_DEVICE_RESTART_Button_Label;
+extern lv_obj_t *uic_sensors_setup_container;
+extern lv_obj_t *uic_Sensor_Setup_Notice_Container;
+extern lv_obj_t *uic_Reset_Notice_Label;
+extern lv_obj_t *uic_submitResetbtn;
+extern lv_obj_t *uic_CancelResetbtn;
+extern lv_obj_t *uic_submitResetbtn_Label;
+extern lv_obj_t *uic_CancelResetbtn_Label;
+extern lv_obj_t *uic_SensorSetupDangerIcon;
+extern lv_obj_t *uic_Reseting_Sensors_Notice_2;
+extern lv_obj_t *uic_Sensor_Setup_main_Container_1;
+extern lv_obj_t *uic_returnButton668;
+extern lv_obj_t *uic_disconnect_sensors_Label;
+extern lv_obj_t *uic_Detail_Success_Status_message_1;
+extern lv_obj_t *uic_Detail_Success_Status_message_1;
+extern lv_obj_t *uic_disconnect_error_icon;
+extern lv_obj_t *uic_success_disconnect_icon;
+extern lv_obj_t *uic_check_and_next_btn_1;
+extern lv_obj_t *uic_check_and_next_btn_1_label;
+extern lv_obj_t *uic_Sensor_Setup_main_Container_2;
+extern lv_obj_t *uic_returnButton6987;
+extern lv_obj_t *uic_Connect_Inlet_Label;
+extern lv_obj_t *uic_Detail_Success_Status_message_3;
+extern lv_obj_t *uic_Detail_Success_Status_message_4;
+extern lv_obj_t *uic_inlet_setup_error_icon;
+extern lv_obj_t *uic_inlet_setup_success_icon;
+extern lv_obj_t *uic_check_and_next_inlet_btn;
+extern lv_obj_t *uic_check_and_next_inlet_btn_label;
+extern lv_obj_t *uic_Sensor_Setup_main_Container_3;
+extern lv_obj_t *uic_returnButton64;
+extern lv_obj_t *uic_Connect_Outlet_Label;
+extern lv_obj_t *uic_Detail_Success_Status_message_5;
+extern lv_obj_t *uic_Detail_Success_Status_message_6;
+extern lv_obj_t *uic_Outlet_setup_error_icon;
+extern lv_obj_t *uic_Outlet_setup_success_icon;
+extern lv_obj_t *uic_check_and_next_Outlet_btn;
+extern lv_obj_t *uic_check_and_next_Outlet_btn_label;
+extern lv_obj_t *uic_Sensor_Setup_main_Container_4;
+extern lv_obj_t *uic_returnButton625;
+extern lv_obj_t *uic_Connect_Antifreeze_Label;
+extern lv_obj_t *uic_Detail_Success_Status_message_7;
+extern lv_obj_t *uic_Detail_Success_Status_message_8;
+extern lv_obj_t *uic_Antifreeze_setup_error_icon;
+extern lv_obj_t *uic_Antifreeze_setup_success_icon;
+extern lv_obj_t *uic_check_and_next_Antifreeze_btn;
+extern lv_obj_t *uic_check_and_next_Antifreeze_btn_label;
+extern lv_obj_t *uic_Sensor_Setup_main_Container_5;
+extern lv_obj_t *uic_returnButton614987;
+extern lv_obj_t *uic_Connect_Filter_Label;
+extern lv_obj_t *uic_Detail_Success_Status_message_9;
+extern lv_obj_t *uic_Detail_Success_Status_message_10;
+extern lv_obj_t *uic_Filter_setup_error_icon;
+extern lv_obj_t *uic_Filter_setup_success_icon;
+extern lv_obj_t *uic_check_and_next_Filter_btn;
+extern lv_obj_t *uic_check_and_next_Filter_btn_label;
+extern lv_obj_t *uic_Sensor_Setup_main_Container_6;
+extern lv_obj_t *uic_sensor_setup_finish_label;
+extern lv_obj_t *uic_sensor_setup_finish_icon;
+extern lv_obj_t *uic_factory_reset_container;
+extern lv_obj_t *uic_reset_factory_notice_text;
+extern lv_obj_t *uic_close_factory_container;
+extern lv_obj_t *uic_Label275;
+extern lv_obj_t *uic_submit_factory;
+extern lv_obj_t *uic_Label1863;
+
+// SCREEN: ui_statusScreen
+void ui_statusScreen_screen_init(void);
+void ui_event_statusScreen( lv_event_t * e);
+extern lv_obj_t *ui_statusScreen;
+void ui_event_returnButton3( lv_event_t * e);
+extern lv_obj_t *ui_returnButton3;
+extern lv_obj_t *ui_statusscreenlabel;
+extern lv_obj_t *ui_TEMP_Label;
+extern lv_obj_t *ui_ALARM_Label;
+extern lv_obj_t *ui_Status_Label;
+extern lv_obj_t *ui_App_Connection_Label;
+extern lv_obj_t *ui_info_Label;
+extern lv_obj_t *ui_Maintenance_Label;
+void ui_event_tempStatusButton( lv_event_t * e);
+extern lv_obj_t *ui_tempStatusButton;
+extern lv_obj_t *ui_tempStatusPanel;
+void ui_event_returnButton11( lv_event_t * e);
+extern lv_obj_t *ui_returnButton11;
+extern lv_obj_t *ui_tempStatusLabel;
+extern lv_obj_t *ui_inlet_temp_danger;
+extern lv_obj_t *ui_outlet_temp_danger;
+extern lv_obj_t *ui_antifreeze_temp_danger;
+extern lv_obj_t *ui_filter_temp_danger;
+extern lv_obj_t *ui_ContainerA1;
+extern lv_obj_t *ui_Inlet_Temp_status;
+extern lv_obj_t *ui_Outlet_Temp_status;
+extern lv_obj_t *ui_antifreeze_temp_status;
+extern lv_obj_t *ui_fan_2_filter_alarm_status;
+void ui_event_alarmStatusButton( lv_event_t * e);
+extern lv_obj_t *ui_alarmStatusButton;
+extern lv_obj_t *ui_alarmStatusPanel;
+void ui_event_returnButton2( lv_event_t * e);
+extern lv_obj_t *ui_returnButton2;
+extern lv_obj_t *ui_alarmStatusLabel;
+extern lv_obj_t *ui_high_temp_danger;
+extern lv_obj_t *ui_door_danger;
+extern lv_obj_t *ui_filter_danger;
+extern lv_obj_t *ui_high_pressure_danger;
+extern lv_obj_t *ui_ContainerA2;
+extern lv_obj_t *ui_high_Temp_Alarm;
+extern lv_obj_t *ui_Door_Alarm;
+extern lv_obj_t *ui_Filter_Alarm;
+extern lv_obj_t *ui_high_Pressure_Alarm;
+void ui_event_relayStatusButton( lv_event_t * e);
+extern lv_obj_t *ui_relayStatusButton;
+extern lv_obj_t *ui_relayStatusPanel;
+void ui_event_returnButton7( lv_event_t * e);
+extern lv_obj_t *ui_returnButton7;
+extern lv_obj_t *ui_relayStatusLabel;
+extern lv_obj_t *ui_ContainerA3;
+extern lv_obj_t *ui_evaprartor_Fan_Status;
+extern lv_obj_t *ui_Compressor_Status;
+extern lv_obj_t *ui_condensor_Fan_1_Status;
+extern lv_obj_t *ui_condensor_Fan_2_Status;
+void ui_event_networkStatusButton( lv_event_t * e);
+extern lv_obj_t *ui_networkStatusButton;
+extern lv_obj_t *ui_networkStatusPanel;
+void ui_event_returnButton8( lv_event_t * e);
+extern lv_obj_t *ui_returnButton8;
+extern lv_obj_t *ui_Connect_to_Device_Label;
+extern lv_obj_t *ui_ContainerA4;
+extern lv_obj_t *ui_access_Point_wifi;
+extern lv_obj_t *ui_access_Point_Password;
+extern lv_obj_t *ui_guidetext;
+extern lv_obj_t *ui_QRcode_Tab;
+extern lv_obj_t *ui_appldownload;
+extern lv_obj_t *ui_Application_QR_Code;
+extern lv_obj_t *ui_download_App_Label;
+extern lv_obj_t *ui_connectToapp;
+extern lv_obj_t *ui_Connection_QR_Code;
+extern lv_obj_t *ui_Connect_App_Label;
+void ui_event_show_QR_Code_Button( lv_event_t * e);
+extern lv_obj_t *ui_show_QR_Code_Button;
+void ui_event_Hide_QR_Code_Button( lv_event_t * e);
+extern lv_obj_t *ui_Hide_QR_Code_Button;
+void ui_event_deviceInfoButton( lv_event_t * e);
+extern lv_obj_t *ui_deviceInfoButton;
+extern lv_obj_t *ui_deviceInfoPanel;
+void ui_event_returnButton9( lv_event_t * e);
+extern lv_obj_t *ui_returnButton9;
+extern lv_obj_t *ui_deviceInfoLabel;
+extern lv_obj_t *ui_ContainerA5;
+extern lv_obj_t *ui_serial_number;
+extern lv_obj_t *ui_customerID;
+extern lv_obj_t *ui_activationDate;
+void ui_event_serviceInfoButton( lv_event_t * e);
+extern lv_obj_t *ui_serviceInfoButton;
+extern lv_obj_t *ui_serviceInfoPanel;
+void ui_event_returnButton10( lv_event_t * e);
+extern lv_obj_t *ui_returnButton10;
+extern lv_obj_t *ui_serviceInfoLabel;
+extern lv_obj_t *ui_ContainerA6;
+extern lv_obj_t *ui_servicesintervals;
+// CUSTOM VARIABLES
+extern lv_obj_t *uic_statusScreen;
+extern lv_obj_t *uic_returnButton3;
+extern lv_obj_t *uic_statusscreenlabel;
+extern lv_obj_t *uic_TEMP_Label;
+extern lv_obj_t *uic_ALARM_Label;
+extern lv_obj_t *uic_Status_Label;
+extern lv_obj_t *uic_App_Connection_Label;
+extern lv_obj_t *uic_info_Label;
+extern lv_obj_t *uic_Maintenance_Label;
+extern lv_obj_t *uic_tempStatusButton;
+extern lv_obj_t *uic_tempStatusPanel;
+extern lv_obj_t *uic_returnButton11;
+extern lv_obj_t *uic_tempStatusLabel;
+extern lv_obj_t *uic_inlet_temp_danger;
+extern lv_obj_t *uic_outlet_temp_danger;
+extern lv_obj_t *uic_antifreeze_temp_danger;
+extern lv_obj_t *uic_filter_temp_danger;
+extern lv_obj_t *uic_ContainerA1;
+extern lv_obj_t *uic_Inlet_Temp_status;
+extern lv_obj_t *uic_Outlet_Temp_status;
+extern lv_obj_t *uic_antifreeze_temp_status;
+extern lv_obj_t *uic_fan_2_filter_alarm_status;
+extern lv_obj_t *uic_alarmStatusButton;
+extern lv_obj_t *uic_alarmStatusPanel;
+extern lv_obj_t *uic_returnButton2;
+extern lv_obj_t *uic_alarmStatusLabel;
+extern lv_obj_t *uic_high_temp_danger;
+extern lv_obj_t *uic_door_danger;
+extern lv_obj_t *uic_filter_danger;
+extern lv_obj_t *uic_high_pressure_danger;
+extern lv_obj_t *uic_ContainerA2;
+extern lv_obj_t *uic_high_Temp_Alarm;
+extern lv_obj_t *uic_Door_Alarm;
+extern lv_obj_t *uic_Filter_Alarm;
+extern lv_obj_t *uic_high_Pressure_Alarm;
+extern lv_obj_t *uic_relayStatusButton;
+extern lv_obj_t *uic_relayStatusPanel;
+extern lv_obj_t *uic_returnButton7;
+extern lv_obj_t *uic_relayStatusLabel;
+extern lv_obj_t *uic_ContainerA3;
+extern lv_obj_t *uic_evaprartor_Fan_Status;
+extern lv_obj_t *uic_Compressor_Status;
+extern lv_obj_t *uic_condensor_Fan_1_Status;
+extern lv_obj_t *uic_condensor_Fan_2_Status;
+extern lv_obj_t *uic_networkStatusButton;
+extern lv_obj_t *uic_networkStatusPanel;
+extern lv_obj_t *uic_returnButton8;
+extern lv_obj_t *uic_Connect_to_Device_Label;
+extern lv_obj_t *uic_ContainerA4;
+extern lv_obj_t *uic_access_Point_wifi;
+extern lv_obj_t *uic_access_Point_Password;
+extern lv_obj_t *uic_guidetext;
+extern lv_obj_t *uic_QRcode_Tab;
+extern lv_obj_t *uic_Application_QR_Code;
+extern lv_obj_t *uic_download_App_Label;
+extern lv_obj_t *uic_connectToapp;
+extern lv_obj_t *uic_Connection_QR_Code;
+extern lv_obj_t *uic_Connect_App_Label;
+extern lv_obj_t *uic_show_QR_Code_Button;
+extern lv_obj_t *uic_Hide_QR_Code_Button;
+extern lv_obj_t *uic_deviceInfoButton;
+extern lv_obj_t *uic_deviceInfoPanel;
+extern lv_obj_t *uic_returnButton9;
+extern lv_obj_t *uic_deviceInfoLabel;
+extern lv_obj_t *uic_ContainerA5;
+extern lv_obj_t *uic_serial_number;
+extern lv_obj_t *uic_customerID;
+extern lv_obj_t *uic_activationDate;
+extern lv_obj_t *uic_serviceInfoButton;
+extern lv_obj_t *uic_serviceInfoPanel;
+extern lv_obj_t *uic_returnButton10;
+extern lv_obj_t *uic_serviceInfoLabel;
+extern lv_obj_t *uic_ContainerA6;
+extern lv_obj_t *uic_servicesintervals;
+
+// SCREEN: ui_mainScreen
+void ui_mainScreen_screen_init(void);
+void ui_event_mainScreen( lv_event_t * e);
+extern lv_obj_t *ui_mainScreen;
+extern lv_obj_t *ui_Logo;
+void ui_event_MenuButton( lv_event_t * e);
+extern lv_obj_t *ui_MenuButton;
+void ui_event_inlet_Arc( lv_event_t * e);
+extern lv_obj_t *ui_inlet_Arc;
+extern lv_obj_t *ui_inletMainsScreen;
+void ui_event_outlet_Arc( lv_event_t * e);
+extern lv_obj_t *ui_outlet_Arc;
+extern lv_obj_t *ui_outletMainsScreen;
+extern lv_obj_t *ui_Cooler_OFF_Icon;
+extern lv_obj_t *ui_Cooler_ON_Icon;
+extern lv_obj_t *ui_Compressor_ON_Icon;
+extern lv_obj_t *ui_Compressor_OFF_Icon;
+extern lv_obj_t *ui_High_Temp_Icon;
+extern lv_obj_t *ui_Low_Temp_Icon;
+extern lv_obj_t *ui_Low_Pressure_Icon;
+extern lv_obj_t *ui_High_Pressure_Icon;
+extern lv_obj_t *ui_Door_Open_Icon;
+extern lv_obj_t *ui_Door_Close_Icon;
+extern lv_obj_t *ui_arc_danger_outlet_;
+extern lv_obj_t *ui_arc_danger_inlet;
+// CUSTOM VARIABLES
+extern lv_obj_t *uic_mainScreen;
+extern lv_obj_t *uic_Logo;
+extern lv_obj_t *uic_MenuButton;
+extern lv_obj_t *uic_inlet_Arc;
+extern lv_obj_t *uic_inletMainsScreen;
+extern lv_obj_t *uic_outlet_Arc;
+extern lv_obj_t *uic_outletMainsScreen;
+extern lv_obj_t *uic_Cooler_OFF_Icon;
+extern lv_obj_t *uic_Cooler_ON_Icon;
+extern lv_obj_t *uic_Compressor_ON_Icon;
+extern lv_obj_t *uic_Compressor_OFF_Icon;
+extern lv_obj_t *uic_High_Temp_Icon;
+extern lv_obj_t *uic_Low_Temp_Icon;
+extern lv_obj_t *uic_Low_Pressure_Icon;
+extern lv_obj_t *uic_High_Pressure_Icon;
+extern lv_obj_t *uic_Door_Open_Icon;
+extern lv_obj_t *uic_Door_Close_Icon;
+extern lv_obj_t *uic_arc_danger_outlet_;
+extern lv_obj_t *uic_arc_danger_inlet;
+
+// EVENTS
+extern lv_obj_t *ui____initial_actions0;
+
+// IMAGES AND IMAGE SETS
+LV_IMG_DECLARE( ui_img_1234_png);   // assets/1234.png
+LV_IMG_DECLARE( ui_img_884211525);   // assets/logo-min-800x191 (1).png
+LV_IMG_DECLARE( ui_img_loading_png);   // assets/loading.png
+LV_IMG_DECLARE( ui_img_return_png);   // assets/return.png
+LV_IMG_DECLARE( ui_img_278418788);   // assets/setting (2).png
+LV_IMG_DECLARE( ui_img_worker_png);   // assets/worker.png
+LV_IMG_DECLARE( ui_img_68039786);   // assets/off (1).png
+LV_IMG_DECLARE( ui_img_info_png);   // assets/info.png
+LV_IMG_DECLARE( ui_img_plus_png);   // assets/plus.png
+LV_IMG_DECLARE( ui_img_1731839073);   // assets/minus (1).png
+LV_IMG_DECLARE( ui_img_1019942150);   // assets/danger (3).png
+LV_IMG_DECLARE( ui_img_return_66_png);   // assets/return 66.png
+LV_IMG_DECLARE( ui_img_unread_png);   // assets/unread.png
+LV_IMG_DECLARE( ui_img_temperature_png);   // assets/temperature.png
+LV_IMG_DECLARE( ui_img_blur_color_background_85551_240x320_png);   // assets/blur_color_background_85551_240x320.png
+LV_IMG_DECLARE( ui_img_1101012385);   // assets/danger (2).png
+LV_IMG_DECLARE( ui_img_sensor_png);   // assets/sensor.png
+LV_IMG_DECLARE( ui_img_120570296);   // assets/sync-problem.png
+LV_IMG_DECLARE( ui_img_wifi_png);   // assets/wifi.png
+LV_IMG_DECLARE( ui_img_983251955);   // assets/qr-code (4).png
+LV_IMG_DECLARE( ui_img_close_png);   // assets/close.png
+LV_IMG_DECLARE( ui_img_1437619218);   // assets/info (17).png
+LV_IMG_DECLARE( ui_img_18821776);   // assets/technical-support.png
+LV_IMG_DECLARE( ui_img_1279246833);   // assets/logo-min-800x191 (3).png
+LV_IMG_DECLARE( ui_img_640283455);   // assets/menu-2.png
+LV_IMG_DECLARE( ui_img_165651551);   // assets/power (4).png
+LV_IMG_DECLARE( ui_img_165652574);   // assets/power (5).png
+LV_IMG_DECLARE( ui_img_300499993);   // assets/cooling-fan (6).png
+LV_IMG_DECLARE( ui_img_300505244);   // assets/cooling-fan (5).png
+LV_IMG_DECLARE( ui_img_835894428);   // assets/high-temprature (4).png
+LV_IMG_DECLARE( ui_img_1488402037);   // assets/low-temprature.png
+LV_IMG_DECLARE( ui_img_pressure_png);   // assets/pressure.png
+LV_IMG_DECLARE( ui_img_31615732);   // assets/dashboard (6).png
+LV_IMG_DECLARE( ui_img_2101917800);   // assets/door (6).png
+LV_IMG_DECLARE( ui_img_778269571);   // assets/door (5).png
+LV_IMG_DECLARE( ui_img_blur_240x320_png);   // assets/blur_240x320.png
+LV_IMG_DECLARE( ui_img_575393433);   // assets/compaq-abstract-zf-320x240-2.png
+LV_IMG_DECLARE( ui_img_menu43_png);   // assets/menu43.png
+LV_IMG_DECLARE( ui_img_1397087731);   // assets/netff_2-color_background_85551_240x320.png
+LV_IMG_DECLARE( ui_img_netff_color_background_85551_240x320_png);   // assets/netff_color_background_85551_240x320.png
+LV_IMG_DECLARE( ui_img_1417296881);   // assets/netlkjhg_2-color_background_85551_240x320.png
+LV_IMG_DECLARE( ui_img_netlkjhg_color_background_85551_240x320_png);   // assets/netlkjhg_color_background_85551_240x320.png
+
+// UI INIT
+void ui_init(void);
+
+#ifdef __cplusplus
+} /*extern "C"*/
+#endif
+
+#endif
